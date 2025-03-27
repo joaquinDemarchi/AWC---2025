@@ -33,74 +33,49 @@
         <section>
             <h2>Formulario de productos</h2>
             <form action="#" method="post">
-                <table>
-                    <thead style="display: none;">
-                        <tr>
-                            <th>CAMPO</th>
-                            <th>VALOR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><label for="nombre">Nombre del Producto:</label></td>
-                            <td><input type="text" id="nombre" name="nombre" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="precio">Precio:</label></td>
-                            <td><input type="number" id="precio" name="precio" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="cantidad">Cantidad:</label></td>
-                            <td><input type="number" id="cantidad" name="cantidad" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="color">Color:</label></td>
-                            <td><input type="color" id="color" name="color" ></td>
-                        </tr>
-                        <tr>
-                            <td><label for="envio">¿Envio gratis?</label></td>
-                            <td><input type="checkbox" id="envio" name="envio"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="descripcion">Descripción:</label></td>
-                            <td><textarea id="descripcion" name="descripcion" rows="6" style="resize: none;" required></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="categoria">Categoría:</label>
-                            </td>
-                            <td>
-                                <select id="categoria" name="categoria" required>
-                                    <option value="electronica">Electrónica</option>
-                                    <option value="ropa">Ropa</option>
-                                    <option value="hogar">Hogar</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="imagen">Imagen del Producto:</label></td>
-                            <td>
-                                <input type="file" id="imagen" name="imagen" accept="image/*" required>
-                                <br>
-                                <img src="pc.jfif" width="50px" alt="Vista previa">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="video">Video Promocional:</label></td>
-                            <td>
-                                <input type="file" id="video" name="video" accept="video/*">
-                                <br>
-                                <video controls width="200">
-                                    <source src="publi.mp4" type="video/mp4">
-                                    Tu navegador no soporta videos.
-                                </video>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <footer>
-                    <button type="submit">Guardar Producto</button>
-                </footer>
+                <br>
+                <label for="nombre">Nombre del Producto:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <br>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" required>
+                <br>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+                <br>
+                <label for="color">Color:</label>
+                <input type="color" id="color" name="color" >
+                <br>
+                <label for="envio">¿Envio gratis?</label>
+                <input type="checkbox" id="envio" name="envio">
+                |<br>
+                <label for="descripcion">Descripción:</label>
+                <br>
+                <textarea id="descripcion" name="descripcion" rows="6" style="resize: none;" required></textarea>
+                <br>
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                        <option value="electronica">Electrónica</option>
+                        <option value="ropa">Ropa</option>
+                        <option value="hogar">Hogar</option>
+                    </select>
+                <br>
+                <label for="imagen">Imagen del Producto:</label>
+                
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                    <br>
+                    <img src="pc.jfif" width="50px" alt="Vista previa">
+                <br>
+                <label for="video">Video Promocional:</label>
+                
+                    <input type="file" id="video" name="video" accept="video/*">
+                    <br>
+                    <video controls width="200">
+                        <source src="publi.mp4" type="video/mp4">
+                        Tu navegador no soporta videos.
+                </video>
+                <br>
+                <button type="submit">Guardar Producto</button>
             </form>
         </section>
     </main>
