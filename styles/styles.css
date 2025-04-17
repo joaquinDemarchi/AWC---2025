@@ -1,29 +1,139 @@
+.menuNav {
+    background-color: orange;
+    padding: 15px ;
+}
+
+.listaMenuNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.listaMenuNav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.listaMenuNav li a:hover {
+    background-color: orangered;
+    color: white;
+}
+
+
 .formularioCarga{
     display: none;
 }
 
 .producto{
-    background-color: beige;
-    width: 40%;
-    margin: 20px;
-    padding: 5px 29px 29px 29px;
-    border-radius: 3%;
-    min-width: 300px;
-    max-width: 400px;
+    background-color: #f8f9fa;
+    width: 100%;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .producto > img {
-    border-radius: 3%;
+    border-radius: 5%;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
+
+.producto h3 {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.producto p:last-of-type {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.producto button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.producto button:hover {
+    background-color: orangered;
+}
+
 
 .product-container{
     display: flex;
     flex-wrap: wrap;
-    align-items:center;
     justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
+
 
 footer{
     background-color: black;
     color: antiquewhite;
+}
+
+
+/* Media queries*/
+
+/* cambai tamañno de tarjetas el mediaquerie */
+
+/* celulares */
+@media (min-width: 600px) {
+    .producto {
+        width: calc(50% - 30px);
+    }
+
+    .listaMenuNav {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .listaMenuNav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .listaMenuNav li a {
+        display: block;
+        padding: 8px;
+    }
+}
+/* tablets */
+@media (min-width: 900px) {
+    .producto {
+        width: calc(33.333% - 30px);
+    }
+}
+/* compu */
+@media (min-width: 1200px) {
+    .producto {
+        width: calc(25% - 30px);
+    }
 }
