@@ -1,3 +1,7 @@
+.formularioCarga{
+    display: none;
+}
+
 .producto{
     background-color: beige;
     width: 40%;
@@ -17,4 +21,9 @@
     flex-wrap: wrap;
     align-items:center;
     justify-content: center;
+}
+
+footer{
+    background-color: black;
+    color: antiquewhite;
 }
