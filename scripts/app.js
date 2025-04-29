@@ -2,25 +2,25 @@ const products = [
     {
         name: "Camiseta",
         description: "Camiseta de algodón 100%",
-        image: "./img/pc.jfif",
+        image: "./img/camiseta.png",
         price: 15
     },  
     {
         name: "Pantalones",
         description: "Pantalones de mezclilla",
-        image: "./img/pc.jfif",
+        image: "./img/pantalones.webp",
         price: 25
     },
     {
         name: "Zapatos",
         description: "Zapatos de cuero",
-        image:"./img/pc.jfif",
+        image:"./img/zapatos.webp",
         price: 50
     },
     {
         name: "Sombrero",
         description: "Sombrero de paja",
-        image: "./img/pc.jfif",
+        image: "./img/sombrero.webp",
         price: 10
 
     }
