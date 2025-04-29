@@ -90,6 +90,7 @@ h1, h2, h3 {
     height: 400px;
     object-fit: cover; 
     object-position: center; 
+    cursor: pointer;
 }
 
 
@@ -112,6 +113,7 @@ h1, h2, h3 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .producto:hover {
@@ -261,11 +263,19 @@ h3 {
 
 /* cambai tamañno de tarjetas el mediaquerie */
 
-/* celulares */
+
+@media (max-width: 350px) {
+    .producto {
+        /* width: calc(33.333% - 30px); */
+        max-width: 80%;
+        margin: 15px;
+    }
+}
 
 @media (max-width: 600px) {
     .buscador input {
         display: none;
+        max-width: 60%;
     }
 }
 
@@ -276,11 +286,14 @@ h3 {
     }
 }
 
-@media (min-width: 600px) {
-
+@media (max-width: 900px) {
     .producto {
-        width: calc(50% - 30px);
+        /* width: calc(33.333% - 30px); */
+        max-width: 60%;
     }
+}
+
+@media (min-width: 600px) {
 
     .listaMenu2 {
         flex-direction: row;
