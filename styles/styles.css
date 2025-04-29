@@ -6,6 +6,9 @@ h1, h2, h3 {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+
+/*MENU 1*/
+
 .menu1 {
     display: flex;
     align-items: center;
@@ -13,6 +16,10 @@ h1, h2, h3 {
     padding: 10px 20px;
     background: #f8f8f8;
     border-bottom: 1px solid #ddd;
+}
+
+.menu1 img {
+    width: 50px;
 }
 
 .buscador input {
@@ -43,6 +50,10 @@ h1, h2, h3 {
     font-size: 18px;
 }
 
+
+
+/*MENU 2*/
+
 .menu2 {
     background-color: orange;
     padding: 15px ;
@@ -72,8 +83,24 @@ h1, h2, h3 {
 }
 
 
-.formularioCarga{
-    display: none;
+/*BANNER OFERTAS*/
+
+.bannerOf {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; 
+    object-position: center; 
+}
+
+
+.ProductosDestacados{
+    background-color: #f5e5ca;
+}
+
+.ProductosDestacados div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .producto{
@@ -149,6 +176,13 @@ footer{
 /* cambai tamañno de tarjetas el mediaquerie */
 
 /* celulares */
+
+@media (max-width: 600px) {
+    .buscador input {
+        display: none;
+    }
+}
+
 @media (min-width: 600px) {
     .producto {
         width: calc(50% - 30px);
@@ -169,12 +203,16 @@ footer{
         display: block;
         padding: 8px;
     }
+
+    
+
 }
 /* tablets */
 @media (min-width: 900px) {
     .producto {
         width: calc(33.333% - 30px);
     }
+    
 }
 /* compu */
 @media (min-width: 1200px) {
