@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMARCHI - Catalogo de productos v.1  </title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/contacto.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500&display=swap">
+    
+    <title>Contacto</title>
+    <style>
+        
+    </style>
 </head>
-<!-- prueba de cambio -->
 <body>
-
     <nav class="menu1">
         <div class="logo">
             <img src="./img/logo.png" alt="Logo">
@@ -30,57 +33,47 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Productos</a></li>
             <li><a href="#">Ofertas</a></li>
-            <li><a href="./contacto.html">Contacto</a></li>
+            <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
+
+    <header class="headerContacto">
+        <h1>CONTACTO</h1>
+        <p>Contactanos con nosotros</p>
+    </header>
     
-    <!-- barra de ofertas  -->
-    <div>
-        <img src="./img/superOferta.png" alt="Ofertas" class="bannerOf" >
-    </div>
-
-    <main>
-        <section class="ProductosDestacados">
-            <div>
-                <h2>Productos Destacados</h2>
-            </div>
+    <div class="contactoContainer">
+        <h2>Informacion general</h2>
         
-            <div class="product-container">
-                <!-- <div class="producto">
-                    <h3>Smartphone X100</h3>
-                    <p><strong>Precio:</strong> $199.999</p>
-                    
-                    <img src="pc.jfif" width="300" height="250" alt="Imagen del producto">
+        <div class="infoContacto">
+        
+            <p><strong>Dirección:</strong> Calle Principal 123, Ciudad, País</p>
+            <p><strong>Teléfono:</strong> +1 234 567 890</p>
+            <p><strong>Email:</strong> info@empresaxyz.com</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
+        </div>
+        
+        <h2>Envíanos un mensaje</h2>
+        <div class="formuContacto">
 
-                    <br>
-
-                    <label for="envio1">¿Envio gratis?</label>
-                    <input type="checkbox" id="envio1" name="envio">
-
-                    <label for="color1">Color:</label>
-                    <input type="color" id="color1" name="color" >
-
-                    <p><strong>Descripción:</strong> Smartphone de última generación con pantalla AMOLED y batería de larga duración.</p>
-                    
-                    <label for="categoria1">Categoría:</label>
-            
-                    <select id="categoria1" name="categoria" required>
-                        <option value="electronica" selected>Electrónica</option>
-                        <option value="ropa">Ropa</option>
-                        <option value="hogar">Hogar</option>
-                    </select>
-                    
-                    <br>
-                    
-                </div> -->
-            </div>
-        </section>
-    </main>
-
-    <!-- <footer>
-        <p>Catálogo de Productos de Joaquin Demarchi</p>
-    </footer> -->
-
+            <form action="#" method="post" class="formContacto">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required class="inputContacto">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required class="inputContacto">
+                
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" class="inputContacto">
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required class="txtAreaContacto"></textarea>
+                
+                <button type="submit" class="botonEnvioForm">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+    
     <footer>
         <div class="footerContainer">
             <div class="footerSobre">
@@ -119,5 +112,4 @@
         </div>
     </footer>
 </body>
-<script src="./scripts/app.js"></script>
 </html>

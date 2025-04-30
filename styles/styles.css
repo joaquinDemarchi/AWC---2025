@@ -6,6 +6,9 @@ h1, h2, h3 {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+textarea {
+    resize: none;
+}
 
 /*MENU 1*/
 
