@@ -1,14 +1,25 @@
 body {
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3 {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
 textarea {
     resize: none;
 }
+
+
+
 
 /*MENU 1*/
 
@@ -54,7 +65,6 @@ textarea {
 }
 
 
-
 /*MENU 2*/
 
 .menu2 {
@@ -85,17 +95,194 @@ textarea {
     color: white;
 }
 
+/* FOOTER */
+
+footer {
+    background-color: black;
+    color: #ecf0f1;
+    padding: 30px 0;
+}
+
+.footerContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Columnas del footer */
+.footerSobre, .footerLinks, .footerContact {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Logo */
+.footerLogo {
+    margin-bottom: 15px;
+}
+
+/* Texto descripción */
+.footerSobre p {
+    margin-bottom: 20px;
+    color: #bdc3c7;
+}
+
+/* Redes sociales */
+.footerRedesSociales {
+    display: flex;
+    gap: 122px;
+}
+
+.footerRedesSociales a {
+    color: #ecf0f1;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.footerRedesSociales a:hover {
+    color: #3498db;
+}
+
+
+
+/* Lista de enlaces */
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+}
+
+/* Contacto */
+.footer-contact p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bdc3c7;
+}
+
+.footer-contact i {
+    width: 20px;
+}
+
+
+/* ------------------ INCIO --------------------- */
+
 
 /*BANNER OFERTAS*/
 
-.bannerOf {
+/* .bannerOf {
     width: 100%;
     height: 400px;
     object-fit: cover; 
     object-position: center; 
     cursor: pointer;
+} */
+
+/* carrusel opcion 1 */
+
+.slider-container {
+    display: flex; 
+    width: 100%;
+    height: 100vh;
+    overflow-x: scroll; /*QUE HACE CUANDO EXECE EL ANCHO DEN CONTEN*/
+    scroll-snap-type: x mandatory;
+    /* scrollbar-width: none;  */
 }
 
+/* .slider-container::-webkit-scrollbar {
+    display: none; 
+} */
+
+.slider-container img {
+    flex: 0 0 100%; /*Cada imagen OCUPA exactamente el 100% del ancho del contenedor*/
+    width: 100%;
+    object-fit: cover; /*COmo la imagen se ajusta a su cont. Mantiene su R.A*/
+    /* scroll-snap-align: center; */
+    scroll-snap-align: start;
+}
+
+/* carrusel opcion 2 */
+
+/*.cpul {
+    width: 100vw;
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    gap: 4vw;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    anchor-name: --myCarousel;
+}
+
+.cp {
+    list-style-type: none;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 20px;
+  
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+}
+
+.cpul::scroll-button(*) {
+    border: 0;
+    font-size: 2rem;
+    background: none;
+    color: rgb(0 0 0 / 0.7);
+    cursor: pointer;
+
+    position: absolute;
+    position-anchor: --myCarousel;
+  }
+  
+.cpul::scroll-button(*):hover,
+.cpul::scroll-button(*):focus {
+    color: rgb(0 0 0 / 1);
+}
+
+.cpul::scroll-button(*):active {
+    translate: 1px 1px;
+}
+
+.cpul::scroll-button(*):disabled {
+    color: rgb(0 0 0 / 0.2);
+    cursor: unset;
+  }
+
+  .cpul::scroll-button(left) {
+    content: "◄";
+
+    right: calc(anchor(left) - 70px);
+    bottom: calc(anchor(top) + 13px);
+  }
+  
+  .cpul::scroll-button(right) {
+    content: "►";
+
+    left: calc(anchor(right) - 70px);
+    bottom: calc(anchor(top) + 13px);
+  }
+
+.cp:nth-child(even) {
+    background-color: cyan;
+  }
+*/
+
+/* PRODUCTOS DESTACADOS */
 
 .ProductosDestacados{
     background-color: #f5e5ca;
@@ -166,7 +353,8 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 10px 10px 100px;
+    /* background-color: red; */
 }
 
 
@@ -175,91 +363,57 @@ textarea {
     color: antiquewhite;
 } */
 
-footer {
-    background-color: black;
-    color: #ecf0f1;
-    padding: 30px 0;
+
+/* ------------------ CONTACTO --------------------- */
+
+body {
+    background-color: #f5e5ca;
 }
 
-.footerContainer {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 0 20px;
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Columnas del footer */
-.footerSobre, .footerLinks, .footerContact {
-    flex: 1;
-    min-width: 250px;
+
+.headerContacto {
+    background-color: brown;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Logo */
-.footerLogo {
-    margin-bottom: 15px;
+.contactoContainer {
+    width: 80%;
+    margin: 20px auto;
 }
 
-/* Texto descripción */
-.footerSobre p {
-    margin-bottom: 20px;
-    color: #bdc3c7;
+.infoContacto, .formuContacto {
+    margin-bottom: 30px;
 }
 
-/* Redes sociales */
-.footerRedesSociales {
-    display: flex;
-    gap: 122px;
+.formuContacto {
+    display: grid;
+    grid-gap: 15px;
 }
 
-.footerRedesSociales a {
-    color: #ecf0f1;
-    font-size: 18px;
-    transition: color 0.2s;
+.inputContacto, .txtAreaContacto {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
-.footerRedesSociales a:hover {
-    color: #3498db;
+.botonEnvioForm {
+    background-color: brown;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
-/* Títulos secciones */
-h3 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+.botonEnvioForm:hover {
+    background-color: orange;
 }
 
-/* Lista de enlaces */
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 8px;
-}
-
-.footer-links a {
-    color: #bdc3c7;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: #3498db;
-}
-
-/* Contacto */
-.footer-contact p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #bdc3c7;
-}
-
-.footer-contact i {
-    width: 20px;
-}
 
 
 /* Media queries*/
