@@ -1,7 +1,7 @@
 body {
     font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1, h2, h3 {
@@ -414,18 +414,67 @@ h1, h2, h3 {
     background-color: orange;
 }
 
+/* ------------------ NOSOTROS --------------------- */
 
+.nosotrosContainer{
+    width: 80%;
+    margin: 20px auto;
+    padding: 40px 0; 
+    background-color: #f5e5ca;
+}
+
+.nosotrosContainerDiv{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nosotrosContainerDiv > h2{
+    color: brown;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contenedorImgYText{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    align-items: center;
+}
+
+.nosotrosContainerDiv > div > div > img {
+    width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nosotrosTxt1{
+    margin-bottom: 20px;
+}
+
+.nosotrosTxt1, .nosotrosTxt2{
+    line-height: 1.6;
+    color: #555;
+}
 
 /* Media queries*/
 
 /* cambai tamañno de tarjetas el mediaquerie */
 
 
-@media (max-width: 350px) {
+@media (max-width: 378px) {
     .producto {
         /* width: calc(33.333% - 30px); */
-        max-width: 80%;
-        margin: 15px;
+        max-width: 90%;
+        max-width: none !important; 
+        margin: 5px auto;
+    }
+
+    .product-container {
+        padding: 10px 5px 100px; 
+    }
+
+    .menu2{
+        display: none;
     }
 }
 
@@ -440,6 +489,11 @@ h1, h2, h3 {
     .footerContainer {
         flex-direction: column;
         gap: 1px;
+    }
+
+    .contenedorImgYText {
+        grid-template-columns: 1fr !important; 
+        gap: 20px;
     }
 }
 
