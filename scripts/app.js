@@ -26,19 +26,19 @@ const products = [
     },
     {
         name: "Play Station 5",
-        description: "Pantalones de mezclilla",
+        description: "Consola de videojuegos",
         image: "./img/PS5.webp",
         price: 25
     },
     {
         name: "Zapatilla",
-        description: "Zapatos de cuero",
+        description: "Zapatillas deportivas",
         image:"./img/zapas.webp",
         price: 50
     },
     {
         name: "TV",
-        description: "Sombrero de paja",
+        description: "Television Samsung",
         image: "./img/TV.jfif",
         price: 10
 

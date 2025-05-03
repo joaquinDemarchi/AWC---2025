@@ -106,7 +106,7 @@ textarea {
 }
 
 .espacio{
-    height: 125px;
+    height: 124px;
 }
 
 /* FOOTER */
@@ -115,15 +115,16 @@ footer {
     background-color: rgba(0, 0, 0, 0.784);
     color: #ecf0f1;
     padding: 30px 0;
+    text-align: center;
 }
 
 .footerContainer {
     max-width: 1100px;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 
@@ -132,9 +133,22 @@ footer {
     min-width: 250px;
 }
 
+.footerLogo,
+.footerParagraph,
+.footerLinks,
+.footerContact {
+    flex: 1;
+}
+
 /* Logo */
 .footerLogo {
     margin-bottom: 15px;
+}
+
+.footerLogo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
 }
 
 /* Texto descripción */
@@ -143,11 +157,26 @@ footer {
     color: #bdc3c7;
 }
 
+.footerParagraph {
+    flex: 1.5; /* Mantenemos el mismo tamaño que en la versión anterior */
+    display: flex; /* Activamos flexbox */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal (opcional) */
+    text-align: center; /* Alineación del texto */
+}
+
+.footerParagraph p {
+    margin: 0 auto;
+    color: #bdc3c7;
+    max-width: 300px;
+    width: 100%;
+}
 
 /* Lista de enlaces */
 .footerLinks ul {
     list-style-type: none; 
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .footerLinks li {
@@ -157,25 +186,83 @@ footer {
 .footerLinks a {
     color: #bdc3c7;
     text-decoration: none;
-    transition: color 0.2s; /* Efecto hover suave */
+    transition: color 0.2s;
 }
 
 .footerLinks a:hover {
     color: #3498db;
 }
 
-/* Contacto */
-.footer-contact p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.footerContact p {
+    margin: 8px 0;
     color: #bdc3c7;
 }
 
 .footer-contact i {
     width: 20px;
 }
+
+/* ------------- */
+
+
+@media (min-width: 500px) {
+    .footerContainer {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .footerLogo,
+    .footerParagraph {
+        flex-basis: calc(50% - 15px);
+    }
+    
+    .footerLinks,
+    .footerContact {
+        flex-basis: calc(50% - 15px);
+    }
+    
+    .footerParagraph p {
+        max-width: none;
+    }
+}
+
+@media (min-width: 900px) {
+    .footerContainer {
+        flex-wrap: nowrap;
+        gap: 40px;
+    }
+    
+    .footerLogo {
+        flex: 1.5; /* Más espacio para el logo */
+    }
+    
+    .footerParagraph {
+        flex: 1.5; /* Igual que el logo */
+        text-align: left;
+        justify-content: flex-start; /* Alineamos a la izquierda en desktop */
+        text-align: left; /* Texto alineado a la izquierda */
+    }
+    
+    .footerLinks,
+    .footerContact {
+        flex: 1;
+        text-align: left;
+    }
+    
+    .footerParagraph p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+    
+    /* Alineación vertical del contenido */
+    .footerLogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
 
 
 /* ------------------ INCIO --------------------- */
@@ -531,8 +618,8 @@ h1, h2, h3 {
     }
 
     .contenedorImgYText {
-        grid-template-columns: 1fr !important; 
-        gap: 20px;
+        grid-template-columns: 1fr; 
+        gap: 2px;
     }
 }
 
