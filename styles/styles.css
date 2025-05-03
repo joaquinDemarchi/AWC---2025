@@ -202,68 +202,6 @@ footer {
     width: 20px;
 }
 
-/* ------------- */
-
-
-@media (min-width: 500px) {
-    .footerContainer {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
-    .footerLogo,
-    .footerParagraph {
-        flex-basis: calc(50% - 15px);
-    }
-    
-    .footerLinks,
-    .footerContact {
-        flex-basis: calc(50% - 15px);
-    }
-    
-    .footerParagraph p {
-        max-width: none;
-    }
-}
-
-@media (min-width: 900px) {
-    .footerContainer {
-        flex-wrap: nowrap;
-        gap: 40px;
-    }
-    
-    .footerLogo {
-        flex: 1.5; /* Más espacio para el logo */
-    }
-    
-    .footerParagraph {
-        flex: 1.5; /* Igual que el logo */
-        text-align: left;
-        justify-content: flex-start; /* Alineamos a la izquierda en desktop */
-        text-align: left; /* Texto alineado a la izquierda */
-    }
-    
-    .footerLinks,
-    .footerContact {
-        flex: 1;
-        text-align: left;
-    }
-    
-    .footerParagraph p {
-        margin: 0;
-        font-size: 0.9em;
-    }
-    
-    /* Alineación vertical del contenido */
-    .footerLogo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-}
-
-
 
 /* ------------------ INCIO --------------------- */
 
@@ -593,6 +531,27 @@ h1, h2, h3 {
     }
 }
 
+@media (min-width: 500px) {
+    .footerContainer {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .footerLogo,
+    .footerParagraph {
+        flex-basis: calc(50% - 15px);
+    }
+    
+    .footerLinks,
+    .footerContact {
+        flex-basis: calc(50% - 15px);
+    }
+    
+    .footerParagraph p {
+        max-width: none;
+    }
+}
+
 
 @media (max-width: 600px) {
     .buscador input {
@@ -655,6 +614,40 @@ h1, h2, h3 {
 @media (min-width: 900px) {
     .producto {
         width: calc(33.333% - 30px);
+    }
+
+    .footerContainer {
+        flex-wrap: nowrap;
+        gap: 40px;
+    }
+    
+    .footerLogo {
+        flex: 1.5; /* Más espacio para el logo */
+    }
+    
+    .footerParagraph {
+        flex: 1.5; /* Igual que el logo */
+        text-align: left;
+        justify-content: flex-start; /* Alineamos a la izquierda en desktop */
+        text-align: left; /* Texto alineado a la izquierda */
+    }
+    
+    .footerLinks,
+    .footerContact {
+        flex: 1;
+        text-align: left;
+    }
+    
+    .footerParagraph p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+    
+    /* Alineación vertical del contenido */
+    .footerLogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
 }
