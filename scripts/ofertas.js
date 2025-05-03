@@ -23,36 +23,16 @@ const products = [
         image: "./img/sombrero.webp",
         price: 10
 
-    },
-    {
-        name: "Play Station 5",
-        description: "Pantalones de mezclilla",
-        image: "./img/PS5.webp",
-        price: 25
-    },
-    {
-        name: "Zapatilla",
-        description: "Zapatos de cuero",
-        image:"./img/zapas.webp",
-        price: 50
-    },
-    {
-        name: "TV",
-        description: "Sombrero de paja",
-        image: "./img/TV.jfif",
-        price: 10
-
     }
 ];
 
-//localiza la etiqut que contendra los preductos
-const contenedorProductos = document.querySelector('.product-container');
 const contenedorOfertas = document.querySelector('.ofertas-container');
 
-function createProductCard(product) {
+function createProductCard(product, isOffer = false) {
     //crea tarjeta produto
     const card = document.createElement('article');
     card.classList.add('producto');
+    if(isOffer) card.classList.add('producto-oferta'); 
 
     //crea imagen
     const img = document.createElement('img');
@@ -85,26 +65,12 @@ function createProductCard(product) {
     return card;
 }
 
-// function addProduct() {
-//     const newProduct = {
-//         name: "Nuevo Producto",
-//         description: "Descripción del nuevo producto",
-//         image: "./img/image-google.png",
-//         price: 20
-//     };
+const ofertas = products.filter(product => product.price <= 25);
 
-//     const card = createProductCard(newProduct);
-//     contenedorProductos.appendChild(card);
-// }
+console.log(ofertas);
 
-products.forEach( product => {
-    const card = createProductCard(product);
-    contenedorProductos.appendChild(card);
+
+ofertas.forEach(product => {
+    const card = createProductCard(product, true);
+    contenedorOfertas.appendChild(card);
 });
-
-
-
-// const button = document.querySelector('#btn-add-products');
-
-// button.addEventListener('click', addProduct);
-

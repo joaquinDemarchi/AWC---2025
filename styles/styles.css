@@ -30,6 +30,11 @@ textarea {
     padding: 10px 20px;
     background: #f8f8f8;
     border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .menu1 img {
@@ -70,6 +75,11 @@ textarea {
 .menu2 {
     background-color: orange;
     padding: 15px ;
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    right: 0; 
+    z-index: 1000;
 }
 
 .listaMenu2 {
@@ -95,10 +105,14 @@ textarea {
     color: white;
 }
 
+.espacio{
+    height: 125px;
+}
+
 /* FOOTER */
 
 footer {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.784);
     color: #ecf0f1;
     padding: 30px 0;
 }
@@ -112,8 +126,8 @@ footer {
     padding: 0 20px;
 }
 
-/* Columnas del footer */
-.footerSobre, .footerLinks, .footerContact {
+
+/* .footerSobre, .footerLinks,*/ .footerContact { 
     flex: 1;
     min-width: 250px;
 }
@@ -129,39 +143,24 @@ footer {
     color: #bdc3c7;
 }
 
-/* Redes sociales */
-.footerRedesSociales {
-    display: flex;
-    gap: 122px;
-}
-
-.footerRedesSociales a {
-    color: #ecf0f1;
-    font-size: 18px;
-    transition: color 0.2s;
-}
-
-.footerRedesSociales a:hover {
-    color: #3498db;
-}
-
-
 
 /* Lista de enlaces */
-.footer-links ul {
-    list-style: none;
+.footerLinks ul {
+    list-style-type: none; 
+    padding-left: 0;
 }
 
-.footer-links li {
+.footerLinks li {
     margin-bottom: 8px;
 }
 
-.footer-links a {
+.footerLinks a {
     color: #bdc3c7;
     text-decoration: none;
+    transition: color 0.2s; /* Efecto hover suave */
 }
 
-.footer-links a:hover {
+.footerLinks a:hover {
     color: #3498db;
 }
 
@@ -181,16 +180,6 @@ footer {
 
 /* ------------------ INCIO --------------------- */
 
-
-/*BANNER OFERTAS*/
-
-/* .bannerOf {
-    width: 100%;
-    height: 400px;
-    object-fit: cover; 
-    object-position: center; 
-    cursor: pointer;
-} */
 
 /* carrusel opcion 1 */
 
@@ -358,10 +347,45 @@ footer {
 }
 
 
-/* footer{
-    background-color: black;
-    color: antiquewhite;
-} */
+
+/* ------------------ OFERTAS --------------------- */
+
+.ofertas-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 10px 100px;
+    /* background-color: red; */
+}
+
+.ofertas {
+    background-color: #fff3e0;
+    padding: 20px 0;
+}
+
+.ofertas h2 {
+    text-align: center;
+    color: #e65100;
+    margin-bottom: 30px;
+}
+
+.producto-oferta {
+    border: 2px solid #e65100;
+    position: relative;
+}
+
+.producto-oferta::before {
+    content: "OFERTA";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e65100;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
 
 
 /* ------------------ CONTACTO --------------------- */
@@ -376,7 +400,7 @@ h1, h2, h3 {
 
 
 .headerContacto {
-    background-color: brown;
+    background-color: rgb(255, 208, 0);
     color: white;
     padding: 20px;
     text-align: center;
@@ -385,15 +409,19 @@ h1, h2, h3 {
 .contactoContainer {
     width: 80%;
     margin: 20px auto;
+    margin-top: 50px;
 }
 
 .infoContacto, .formuContacto {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
-.formuContacto {
-    display: grid;
-    grid-gap: 15px;
+.formContacto{
+    width: 80%;
+}
+
+#mensaje {
+    margin-bottom: 30px;
 }
 
 .inputContacto, .txtAreaContacto {
@@ -474,16 +502,27 @@ h1, h2, h3 {
     }
 
     .menu2{
-        display: none;
+        padding: 5px;
     }
 }
+
 
 @media (max-width: 600px) {
     .buscador input {
         display: none;
         max-width: 60%;
     }
+    .espacio{
+        height: 80px;
+    }
 }
+
+@media (min-width: 378px) and (max-width: 600px) {
+    .espacio{
+        height: 110px;
+    }
+}
+
 
 @media (max-width: 768px) {
     .footerContainer {
