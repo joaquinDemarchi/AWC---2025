@@ -64,9 +64,19 @@ textarea {
     background: #f0f0f0;
 }
 
+.ingresar:hover {
+    background-color: orangered;
+    color: white;
+}
+
 .carrito {
     background: #ffd700;
     font-size: 18px;
+}
+
+.carrito:hover {
+    background-color: orangered;
+    color: white;
 }
 
 
@@ -456,15 +466,18 @@ h1, h2, h3 {
 }
 
 .botonEnvioForm {
-    background-color: brown;
+    background-color: orange;
     color: white;
     border: none;
+    border-radius: 5%;
+    padding: 8px 15px;
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .botonEnvioForm:hover {
-    background-color: orange;
+    background-color: orangered;
 }
 
 /* ------------------ NOSOTROS --------------------- */
