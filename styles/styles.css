@@ -25,6 +25,9 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: #fff3e0;
+    min-height: 100vh;
+    display: flex;            /* Activa flexbox */
+    flex-direction: column; 
 }
 
 h1, h2, h3 {
@@ -40,7 +43,6 @@ h3 {
 textarea {
     resize: none;
 }
-
 
 
 
@@ -141,8 +143,17 @@ textarea {
 }
 
 .espacio{
-    height: 127px;
+    height: 124px;
 }
+
+/* CONTENIDO PRINCIPAL */
+
+.main-content {
+    flex: 1;                  /* Ocupa todo el espacio disponible */
+    padding-bottom: 100px;    /* Espacio para el footer */
+}
+  
+
 
 /* FOOTER */
 
@@ -151,6 +162,7 @@ footer {
     color: #ecf0f1;
     padding: 30px 0;
     text-align: center;
+    margin-top: auto;
 }
 
 .footerContainer {
@@ -646,6 +658,14 @@ footer {
         grid-template-columns: 1fr; 
         gap: 2px;
     }
+
+    .main-content {
+        padding-bottom: 150px; /* Más espacio en móviles */
+      }
+      
+      footer {
+        padding: 20px 0; /* Footer más compacto */
+      }
 }
 
 @media (max-width: 900px) {

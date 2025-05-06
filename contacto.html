@@ -37,45 +37,48 @@
         </ul>
     </nav>
 
-    <div class="espacio">
-    </div>
-
-    <header class="headerContacto">
-        <h1>CONTACTO</h1>
-        <p>Contactanos con nosotros</p>
-    </header>
+    <main class="main-content">
+        <div class="espacio">
+        </div>
     
-    <div class="contactoContainer">
-        <h2>Informacion general</h2>
+        <header class="headerContacto">
+            <h1>CONTACTO</h1>
+            <p>Contactanos con nosotros</p>
+        </header>
         
-        <div class="infoContacto">
-        
-            <p><strong>Dirección:</strong> Calle Principal 123, Ciudad, País</p>
-            <p><strong>Teléfono:</strong> +1 234 567 890</p>
-            <p><strong>Email:</strong> info@empresaxyz.com</p>
-            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
+        <div class="contactoContainer">
+            <h2>Informacion general</h2>
+            
+            <div class="infoContacto">
+            
+                <p><strong>Dirección:</strong> Calle Principal 123, Ciudad, País</p>
+                <p><strong>Teléfono:</strong> +1 234 567 890</p>
+                <p><strong>Email:</strong> info@empresaxyz.com</p>
+                <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
+            </div>
+            
+            <h2>Envíanos un mensaje</h2>
+            <div class="formuContacto">
+    
+                <form action="#" method="post" class="formContacto">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required class="inputContacto">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required class="inputContacto">
+                    
+                    <label for="asunto">Asunto:</label>
+                    <input type="text" id="asunto" name="asunto" class="inputContacto">
+                    
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required class="txtAreaContacto"></textarea>
+                    
+                    <button type="submit" class="botonEnvioForm">Enviar Mensaje</button>
+                </form>
+            </div>
         </div>
-        
-        <h2>Envíanos un mensaje</h2>
-        <div class="formuContacto">
-
-            <form action="#" method="post" class="formContacto">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required class="inputContacto">
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required class="inputContacto">
-                
-                <label for="asunto">Asunto:</label>
-                <input type="text" id="asunto" name="asunto" class="inputContacto">
-                
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="5" required class="txtAreaContacto"></textarea>
-                
-                <button type="submit" class="botonEnvioForm">Enviar Mensaje</button>
-            </form>
-        </div>
-    </div>
+    </main>
+   
     
     <footer>
         <div class="footerContainer">
