@@ -47,9 +47,15 @@ function createProductCard(product, isOffer = false) {
     const description = document.createElement('p');
     description.textContent = product.description;
 
+    console.log("Precio de", product.name, ":", product.price, "Tipo:", typeof product.price);
     //crea precio
     const price = document.createElement('p');
     price.textContent = `$${product.price}`;
+
+    if (product.price <= 25) {
+        price.classList.add('precioOf');
+        console.log("Clase añadida:", price.classList)
+    }
 
     //crea boton
     const button = document.createElement('button');
@@ -73,4 +79,6 @@ console.log(ofertas);
 ofertas.forEach(product => {
     const card = createProductCard(product, true);
     contenedorOfertas.appendChild(card);
+
+
 });

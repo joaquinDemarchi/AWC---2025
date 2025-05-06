@@ -70,6 +70,7 @@ function createProductCard(product) {
     //crea precio
     const price = document.createElement('p');
     price.textContent = `$${product.price}`;
+    price.classList.add('precioProd');
 
     //crea boton
     const button = document.createElement('button');
