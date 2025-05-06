@@ -500,7 +500,7 @@ footer {
 
 .headerContacto {
     background-color: var(--color-naranja-claro);
-    color: white;
+    color: var(--color-gris-texto);
     padding: 20px;
     text-align: center;
 }
