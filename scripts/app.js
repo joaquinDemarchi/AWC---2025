@@ -47,7 +47,6 @@ const products = [
 
 //localiza la etiqut que contendra los preductos
 const contenedorProductos = document.querySelector('.product-container');
-const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
     
@@ -94,8 +93,30 @@ function createProductCard(product) {
 }
 
 
-products.forEach( product => {
-    const card = createProductCard(product);
-    contenedorProductos.appendChild(card);
-});
+// Verifica si los contenedores existen antes de usarlos
+if (contenedorProductos) {
+    products.forEach(product => {
+        const card = createProductCard(product);
+        contenedorProductos.appendChild(card);
+    });
+} else {
+    console.warn('No se encontró el contenedor .product-container');
+}
 
+
+// Función para cargar componentes
+async function loadComponent(componentName, elementId) {
+    try {
+        const response = await fetch(`./componentes/${componentName}.html`);
+        const html = await response.text();
+        document.getElementById(elementId).innerHTML = html;
+    } catch (error) {
+        console.error(`Error loading ${componentName}:`, error);
+    }
+}
+
+// Cargar componentes cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    loadComponent('header', 'header-container');
+    loadComponent('footer', 'footer-container');
+});
