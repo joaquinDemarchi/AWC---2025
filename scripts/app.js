@@ -99,4 +99,3 @@ products.forEach( product => {
     contenedorProductos.appendChild(card);
 });
 
-

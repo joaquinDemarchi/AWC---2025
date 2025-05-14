@@ -11,36 +11,7 @@
 <!-- prueba de cambio -->
 <body>
 
-    <nav class="menu1">
-        <div class="logo">
-            <a href="index.html">
-                <img src="./img/logo.png" alt="Logo">
-            </a>
-        </div>
-
-        <div class="buscador">
-            <input type="text" placeholder="Buscar productos...">
-        </div>
-        
-        <div class="botones">
-            <button class="ingresar">Ingresar</button>
-            <a href="carrito.html">
-                <button class="carrito">🛒</button>
-            </a>
-        </div>
-    </nav>
-
-    <nav class="menu2">
-        <ul class="listaMenu2">
-            <li><a href="./index.html">Inicio</a></li>
-            <li><a href="./ofertas.html">Ofertas</a></li>
-            <li><a href="./nosotros.html">Nosotros</a></li>
-            <li><a href="./contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <div class="espacio">
-    </div>
+    <div id="header-container"></div>
 
     <!-- carrusel opcion 1 -->
 
@@ -62,92 +33,21 @@
         />
       </div> 
 
-      <!-- carrusel opcion 2 -->
-
-   <!-- 
-
-      <h1>Ofertas</h1>
-
-    <ul class="cpul">
-        <li class="cp">
-            <h2>Page 1</h2>
-        </li>
-        <li class="cp">
-            <h2>Page 2</h2>
-        </li>
-        <li class="cp">
-            <h2>Page 3</h2>
-        </li>
-    </ul>
-      -->
+  
     <main>
         <section class="ProductosDestacados">
             <div>
                 <h2>Productos Destacados</h2>
             </div>
         
-            <div class="product-container">
-                <!-- <div class="producto">
-                    <h3>Smartphone X100</h3>
-                    <p><strong>Precio:</strong> $199.999</p>
-                    
-                    <img src="pc.jfif" width="300" height="250" alt="Imagen del producto">
-
-                    <br>
-
-                    <label for="envio1">¿Envio gratis?</label>
-                    <input type="checkbox" id="envio1" name="envio">
-
-                    <label for="color1">Color:</label>
-                    <input type="color" id="color1" name="color" >
-
-                    <p><strong>Descripción:</strong> Smartphone de última generación con pantalla AMOLED y batería de larga duración.</p>
-                    
-                    <label for="categoria1">Categoría:</label>
+            <div class="product-container"></div>
             
-                    <select id="categoria1" name="categoria" required>
-                        <option value="electronica" selected>Electrónica</option>
-                        <option value="ropa">Ropa</option>
-                        <option value="hogar">Hogar</option>
-                    </select>
-                    
-                    <br>
-                    
-                </div> -->
-            </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footerContainer">
-        
-            <div class="footerLogo">
-                <img src="./img/logo.png" alt="Logo">
-            </div>
-        
-            <div class="footerParagraph">
-                <p>TiendaOnline nació con la visión de crear un espacio digital seguro y sencillo para conectar compradores y vendedores de Latinoamérica.</p>
-            </div>
-            
-            <div class="footerLinks">
-                <h3>Enlaces rápidos</h3>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
-            
-            <div class="footerContact">
-                <h3>Contacto</h3>
-                <p>Direccion, Ciudad, País</p>
-                <p>+54 362 4 545898</p>
-                <p>info@productos.com</p>
-                <p>Lunes a Viernes: 9am - 6pm</p>
-            </div>
-        </div>
+    <footer id="footer-container">
     </footer>
 </body>
 <script src="./scripts/app.js"></script>
+<script src="./scripts/componentes.js"></script>
 </html>
