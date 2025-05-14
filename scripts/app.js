@@ -1,49 +1,13 @@
-const products = [
-    {
-        name: "Camiseta",
-        description: "Camiseta de algodón 100%",
-        image: "./img/camiseta.png",
-        price: 15
-    },  
-    {
-        name: "Pantalones",
-        description: "Pantalones de mezclilla",
-        image: "./img/pantalones.webp",
-        price: 25
-    },
-    {
-        name: "Zapatos",
-        description: "Zapatos de cuero",
-        image:"./img/zapatos.webp",
-        price: 50
-    },
-    {
-        name: "Sombrero",
-        description: "Sombrero de paja",
-        image: "./img/sombrero.webp",
-        price: 10
+const products = [];
 
-    },
-    {
-        name: "Play Station 5",
-        description: "Consola de videojuegos",
-        image: "./img/PS5.webp",
-        price: 25
-    },
-    {
-        name: "Zapatilla",
-        description: "Zapatillas deportivas",
-        image:"./img/zapas.webp",
-        price: 50
-    },
-    {
-        name: "TV",
-        description: "Television Samsung",
-        image: "./img/TV.jfif",
-        price: 10
+const getProducts = async () => {
+    const response = await fetch('https://dummyjson.com/products');
+    const data = await response.json();
+    console.log('data', data.products);
+    renderProducts(data.products);
+}
 
-    }
-];
+getProducts();
 
 //localiza la etiqut que contendra los preductos
 const contenedorProductos = document.querySelector('.product-container');
@@ -58,16 +22,16 @@ function createProductCard(product) {
 
     //imagen
     const img = document.createElement('img');
-    img.src = product.image;
-    img.alt = product.name;
+    img.src = product.thumbnail;
+    img.alt = product.title;
 
     //titulo
     const title = document.createElement('h3');
-    title.textContent = product.name;
+    title.textContent = product.title;
 
     //descrip
     const description = document.createElement('p');
-    description.textContent = product.description;
+    description.textContent = 'Aqui va la descripcion del producto. Debe tener un numero de caracteres determminado';
 
     //precio
     const price = document.createElement('p');
@@ -93,15 +57,20 @@ function createProductCard(product) {
 }
 
 
-// Verifica si los contenedores existen antes de usarlos
-if (contenedorProductos) {
-    products.forEach(product => {
+function renderProducts(list){
+
+    if (contenedorProductos) {
+    list.forEach(product => {
         const card = createProductCard(product);
         contenedorProductos.appendChild(card);
     });
-} else {
+    } else {
     console.warn('No se encontró el contenedor .product-container');
+    }
 }
+
+// Verifica si los contenedores existen antes de usarlos
+
 
 
 // Función para cargar componentes

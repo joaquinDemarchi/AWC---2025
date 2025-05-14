@@ -60,6 +60,7 @@ function createProductCard(product, isOffer = false) {
     //crea boton
     const button = document.createElement('button');
     button.textContent = 'Comprar';
+    button.setAttribute("onclick","window.location.href = './detalleProducto.html'")
 
     //crea añade todos los elementos a la tarjeta
     card.appendChild(img);
