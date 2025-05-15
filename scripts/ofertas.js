@@ -54,7 +54,7 @@ function createProductCard(product, isOffer = false) {
 
     if (product.price <= 25) {
         price.classList.add('precioOf');
-        console.log("Clase añadida:", price.classList)
+        //console.log("Clase añadida:", price.classList)
     }
 
     //crea boton
@@ -73,18 +73,20 @@ function createProductCard(product, isOffer = false) {
 }
 
 const ofertas = products.filter(product => product.price <= 25);
-
-console.log(ofertas);
+//console.log(ofertas);
 
 
 ofertas.forEach(product => {
     const card = createProductCard(product, true);
     contenedorOfertas.appendChild(card);
-
-
 });
 
-// Función para cargar componentes
+
+
+
+
+//COMPONENTES FOOTER Y HEADER
+
 async function loadComponent(componentName, elementId) {
     try {
         const response = await fetch(`./componentes/${componentName}.html`);
