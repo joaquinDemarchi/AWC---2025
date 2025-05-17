@@ -3,7 +3,7 @@ const products = [];
 const getProducts = async () => {
     const response = await fetch('https://dummyjson.com/products');
     const data = await response.json();
-    console.log('data', data.products);
+    console.log('data.products', data.products);
     renderProducts(data.products);
 }
 
@@ -11,6 +11,7 @@ getProducts();
 
 //localiza la etiqut que contendra los preductos
 const contenedorProductos = document.querySelector('.product-container');
+const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
     
@@ -60,12 +61,22 @@ function createProductCard(product) {
 function renderProducts(list){
 
     if (contenedorProductos) {
-    list.forEach(product => {
+        list.forEach(product => {
         const card = createProductCard(product);
         contenedorProductos.appendChild(card);
     });
+    } else if(contenedorOfertas) {
+        
+        list.forEach(product => {
+            console.log(product.discountPercentage);
+            
+        if (product.discountPercentage > 15){
+            const card = createProductCard(product);
+            contenedorOfertas.appendChild(card);
+        }
+    })
     } else {
-    console.warn('No se encontró el contenedor .product-container');
+    console.warn('No se encontró ningun contenedor');
     }
 }
 
