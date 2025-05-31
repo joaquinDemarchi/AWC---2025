@@ -1,32 +1,39 @@
 //CONEXION CON AIRTABLE
 
-const API_TOKEN = 'pat1zbngnWnO44ote.b4325ba4e3cb6984dd053f020c9e4d0891362c1ed64e06df1d206846833c971f';
+const API_TOKEN = 'pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc';
 const BASE_ID = 'appjgwL9EfmDSYv7l';
-const TABLE_NAME = 'ProductsAWC';
+const TABLE_NAME = 'Table 1';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
-//reveer esta seccion
-async function crearProducto(nombre, precio) {
-    const nuevoProducto = {
-        fields: {
-            Nombre: nombre,
-            Precio: precio
-        }
-    };
-
-    const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${API_TOKEN}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(nuevoProducto)
-    });
 
 
-    const data = await response;
-    console.log('Producto creado:', data);
-}
+// AIR TABLE: PARA AGREGAR PRODUCTOS
+
+// async function crearProducto(product) {
+   
+//     const itemAirtable = {
+//         fields: product
+//     };
+
+    // const response = await fetch(API_URL, {
+    //     headers: {
+    //         'Authorization': `Bearer ${API_TOKEN}`,
+    //         'Content-Type': 'application/json'
+    //     },
+    // });
+
+//     fetch(API_URL, {
+//         method: 'POST',
+//         headers:{
+//             'Authorization': `Bearer ${API_TOKEN}`,
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(itemAirtable)
+//     }).then(data => console.log(data));
+
+// }
+
+// crearProducto() 
 
 
 ///------------------------------------------------------
@@ -34,21 +41,88 @@ async function crearProducto(nombre, precio) {
 
 //CONEXION CON API DE PRUDUCTOS 
 
+// const getProducts = async () => {
+//     const response = await fetch('https://dummyjson.com/products');
+//     const data = await response.json();
+//     console.log('data.products', data.products);
+//     renderProducts(data.products);
+// }
+
+//AIR TABLE: PARA LISTAR PRODUCTOS 
+//PROFE
+
 const getProducts = async () => {
-    const response = await fetch('https://dummyjson.com/products');
+
+    const response = await fetch(API_URL, {
+        method: 'GET',
+        headers:{
+            'Authorization': `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json'
+        }
+    });
     const data = await response.json();
-    console.log('data.products', data.products);
-    renderProducts(data.products);
+    console.log('data', data);
+
+    const productsMaped = data.records.map(item => {
+        return {
+        title: item.fields.title,
+        description: item.fields.description,
+        thumbnail: item.fields.thumbnail,
+        price: item.fields.price
+        };
+    })
+    console.log(productsMaped);
+    renderProducts(productsMaped);
 }
 
-getProducts();
 
+
+//OTRA POSIBLE SOLUCION
+
+// const getProducts = async () => {
+//     try {
+//         const response = await fetch(API_URL, {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Bearer ${API_TOKEN}`,
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+        
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+        
+//         const data = await response.json();
+//         console.log('Respuesta completa de Airtable:', data);
+
+//         if (!data.records || !Array.isArray(data.records)) {
+//             throw new Error('La respuesta no contiene records o no es un array');
+//         }
+
+//         const productsMaped = data.records.map(item => {
+//             return {
+//                 title: item.fields?.title || 'Sin título',
+//                 description: item.fields?.description || 'Sin descripción',
+//                 thumbnail: item.fields?.thumbnail || '',
+//                 price: item.fields?.price || 0
+//             };
+//         });
+        
+//         console.log('Productos mapeados:', productsMaped);
+//         renderProducts(productsMaped);
+//     } catch (error) {
+//         console.error('Error al obtener productos:', error);
+//     }
+// }
+
+getProducts();
 ///------------------------------------------------------
 
 //CREAR Y LLENAR CARDS
 
 //localiza la etiqut que contendra los preductos
-const contenedorProductos = document.querySelector('.product-container');
+const contenedorProductos = document .querySelector('.product-container');
 const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
@@ -63,6 +137,7 @@ function createProductCard(product) {
     const img = document.createElement('img');
     img.src = product.thumbnail;
     img.alt = product.title;
+    img.setAttribute("onclick","window.location.href = './detalleProducto.html'")
 
     //titulo
     const title = document.createElement('h3');
@@ -88,7 +163,7 @@ function createProductCard(product) {
     card.appendChild(title);
     card.appendChild(description);
     card.appendChild(price);
-    card.appendChild(button);
+    //card.appendChild(button);
 
     
     return card;
