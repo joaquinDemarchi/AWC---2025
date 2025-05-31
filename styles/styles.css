@@ -74,6 +74,10 @@ textarea {
     border-radius: 10px;
 }
 
+/* .search-input{
+    
+} */
+
 .botones {
     display: flex;
     gap: 15px;
@@ -501,7 +505,7 @@ footer {
 
 /* ------------------ CONTACTO --------------------- */
 
-.headerContacto {
+.headerSecciones {
     background-color: var(--color-naranja-claro);
     color: var(--color-gris-texto);
     padding: 20px;

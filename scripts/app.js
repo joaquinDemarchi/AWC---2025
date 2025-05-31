@@ -198,6 +198,7 @@ function renderProducts(list){
 }
 
 
+
 //CARGAR COMPONENTES
 
 // Función para cargar componentes HEADER y FOOTER en todas las paginas.
