@@ -10,17 +10,17 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 // AIR TABLE: PARA AGREGAR PRODUCTOS
 
 // async function crearProducto(product) {
-   
+
 //     const itemAirtable = {
 //         fields: product
 //     };
 
-    // const response = await fetch(API_URL, {
-    //     headers: {
-    //         'Authorization': `Bearer ${API_TOKEN}`,
-    //         'Content-Type': 'application/json'
-    //     },
-    // });
+// const response = await fetch(API_URL, {
+//     headers: {
+//         'Authorization': `Bearer ${API_TOKEN}`,
+//         'Content-Type': 'application/json'
+//     },
+// });
 
 //     fetch(API_URL, {
 //         method: 'POST',
@@ -48,14 +48,19 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 //     renderProducts(data.products);
 // }
 
+//ARR DONDE SE GUARDAN LOS PRODUCTOS DEL CARRITO
+
+const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+
 //AIR TABLE: PARA LISTAR PRODUCTOS 
 //PROFE
+
 
 const getProducts = async () => {
 
     const response = await fetch(API_URL, {
         method: 'GET',
-        headers:{
+        headers: {
             'Authorization': `Bearer ${API_TOKEN}`,
             'Content-Type': 'application/json'
         }
@@ -65,10 +70,10 @@ const getProducts = async () => {
 
     const productsMaped = data.records.map(item => {
         return {
-        title: item.fields.title,
-        description: item.fields.description,
-        thumbnail: item.fields.thumbnail,
-        price: item.fields.price
+            title: item.fields.title,
+            description: item.fields.description,
+            thumbnail: item.fields.thumbnail,
+            price: item.fields.price
         };
     })
     console.log(productsMaped);
@@ -88,11 +93,11 @@ const getProducts = async () => {
 //                 'Content-Type': 'application/json'
 //             }
 //         });
-        
+
 //         if (!response.ok) {
 //             throw new Error(`HTTP error! status: ${response.status}`);
 //         }
-        
+
 //         const data = await response.json();
 //         console.log('Respuesta completa de Airtable:', data);
 
@@ -108,7 +113,7 @@ const getProducts = async () => {
 //                 price: item.fields?.price || 0
 //             };
 //         });
-        
+
 //         console.log('Productos mapeados:', productsMaped);
 //         renderProducts(productsMaped);
 //     } catch (error) {
@@ -122,11 +127,11 @@ getProducts();
 //CREAR Y LLENAR CARDS
 
 //localiza la etiqut que contendra los preductos
-const contenedorProductos = document .querySelector('.product-container');
+const contenedorProductos = document.querySelector('.product-container');
 const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
-    
+
     //crea CARD produto
     const card = document.createElement('article');
     card.classList.add('producto');
@@ -137,7 +142,7 @@ function createProductCard(product) {
     const img = document.createElement('img');
     img.src = product.thumbnail;
     img.alt = product.title;
-    img.setAttribute("onclick","window.location.href = './detalleProducto.html'")
+    img.setAttribute("onclick", "window.location.href = './detalleProducto.html'")
 
     //titulo
     const title = document.createElement('h3');
@@ -152,20 +157,28 @@ function createProductCard(product) {
     price.textContent = `$${product.price}`;
     price.classList.add('precioProd');
 
-    //boton compra
+    //boton compra con carrito
     const button = document.createElement('button');
-    button.textContent = 'Comprar';
-    button.setAttribute("onclick","window.location.href = './detalleProducto.html'")
-    
+    button.textContent = 'Añadir al carrito';
+    // button.setAttribute("onclick","window.location.href = './detalleProducto.html'")
+    button.addEventListener('click', () => {
+        const existe = cartProducts.find(p => p.title === product.title);
+        if (!existe) {
+            cartProducts.push(product);
+            localStorage.setItem('cart', JSON.stringify(cartProducts));
+            //actualiza el LS 
+            console.log('Producto agregado al carrito');
+        }
+    });
 
     //Añade todos los elementos CREADOS a la tarjeta
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(description);
     card.appendChild(price);
-    //card.appendChild(button);
+    card.appendChild(button);
 
-    
+
     return card;
 }
 
@@ -174,26 +187,26 @@ function createProductCard(product) {
 //IMPRIMIR TARJETAS
 
 // Verifica si los contenedores existen antes de usarlos
-function renderProducts(list){
+function renderProducts(list) {
     //sirve para la seccion inicio
     if (contenedorProductos) {
         list.forEach(product => {
-        const card = createProductCard(product);
-        contenedorProductos.appendChild(card);
-    });
-    //sirve para seccion de ofertas 
-    } else if(contenedorOfertas) {
-        
+            const card = createProductCard(product);
+            contenedorProductos.appendChild(card);
+        });
+        //sirve para seccion de ofertas 
+    } else if (contenedorOfertas) {
+
         list.forEach(product => {
             console.log(product.discountPercentage);
-            
-        if (product.discountPercentage > 15){
-            const card = createProductCard(product);
-            contenedorOfertas.appendChild(card);
-        }
-    })
+
+            if (product.discountPercentage > 15) {
+                const card = createProductCard(product);
+                contenedorOfertas.appendChild(card);
+            }
+        })
     } else {
-    console.warn('No se encontró ningun contenedor de productos');
+        console.warn('No se encontró ningun contenedor de productos');
     }
 }
 
