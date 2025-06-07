@@ -70,6 +70,7 @@ const getProducts = async () => {
 
     const productsMaped = data.records.map(item => {
         return {
+            id: item.fields.id,
             title: item.fields.title,
             description: item.fields.description,
             thumbnail: item.fields.thumbnail,
@@ -142,7 +143,7 @@ function createProductCard(product) {
     const img = document.createElement('img');
     img.src = product.thumbnail;
     img.alt = product.title;
-    img.setAttribute("onclick", "window.location.href = './detalleProducto.html'")
+    img.setAttribute("onclick", "window.location.href = './detalleProducto.html?id=" + product.id + "'");
 
     //titulo
     const title = document.createElement('h3');
