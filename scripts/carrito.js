@@ -14,6 +14,10 @@ function createProductCartCard(product) {
     const price = document.createElement('p');
     price.textContent = `$${product.price}`;
 
+    const cant = document.createElement('p');
+    cant.textContent = `Cantidad: ${product.cantidad}`;
+    cant.classList.add('cantidadProd');
+
     const button = document.createElement('button');
     button.textContent = 'Eliminar';
     button.addEventListener('click', () => {
@@ -26,11 +30,13 @@ function createProductCartCard(product) {
             localStorage.setItem('cart', JSON.stringify(carritoConProd));
             // Vuelve a renderizar los productos del carrito
             renderCartProducts(carritoConProd);
+            
         }
     });
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(price);
+    card.appendChild(cant);
     card.appendChild(button);
 
     return card;
@@ -39,24 +45,27 @@ function createProductCartCard(product) {
 function renderCartProducts(list){
     const contenedorProdCart = document.querySelector('.cart-container');
     contenedorProdCart.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
-    
+    const totalPrice = document.querySelector('.totalCarrito');
     //mensaje si el carrito está vacío
     if (list.length === 0) {
         const emptyMessage = document.createElement('p');
         emptyMessage.textContent = 'El carrito está vacío';
         contenedorProdCart.appendChild(emptyMessage);
+        if (totalPrice) {
+            totalPrice.textContent = '';
+        }
         return;
     }
     
     list.forEach( product => {
         const card = createProductCartCard(product);
         contenedorProdCart.appendChild(card);
-
-        const totalPrice = document.querySelector('.totalCarrito');
-        const total = list.reduce((acc, prod) => acc + prod.price, 0);
+    });
+    if (totalPrice) {
+        const total = list.reduce((acc, prod) => acc + (prod.price * (prod.cantidad || 1)), 0);
         totalPrice.textContent = `Total: $${total.toFixed(0)}`;
         totalPrice.classList.add('totalCarritoP');
-    });
+    }
 }
 
 function clearCart() {

@@ -177,7 +177,7 @@ function createProductCard(product) {
     card.appendChild(title);
     card.appendChild(description);
     card.appendChild(price);
-    card.appendChild(button);
+    // card.appendChild(button);
 
 
     return card;

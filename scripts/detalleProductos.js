@@ -78,29 +78,87 @@ const contProdDet = document.querySelector('.product-detail');
 
 
 function createProductCard(product) {
-    const card = document.createElement('div');
-    card.classList.add('product-card');
+    if (!product) {
+        const errorMsg = document.createElement('p');
+        errorMsg.textContent = 'No se encontró el producto.';
+        return errorMsg;
+    }
+    const detalle = document.createElement('div');
+    detalle.classList.add('product-detalle');
 
-    card.innerHTML = `
-        <img src="${product.thumbnail}" alt="${product.title}">
-        <h3>${product.title}</h3>
-        <p>${product.descripLarga}</p>
-        <p>Precio: $${product.price}</p>
-        <p>Material: ${product.material}</p>
-        <p>Color: ${product.color}</p>
-        <a href="detalleProducto.html?id=${product.id}" class="btn">añadir a carrito</a>
-        <a href="graciasPorCompra.html" class="btn">Comprar</a>
-    `;
+    //CONTENEDOR DE IAMGEN
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('img-container');
+    //imagen
+    const img = document.createElement('img');
+    img.src = product.thumbnail;
+    img.alt = product.title;
+    imgContainer.appendChild(img);
 
-    return card;
+    //CONTENEDOR DE INFORMACION
+    const infoContainer = document.createElement('div');
+    infoContainer.classList.add('info-container');
+    //info
+    const title = document.createElement('h3');
+    title.textContent = product.title;
+
+    const price = document.createElement('p');
+    price.textContent = `Precio: $${product.price}`;
+
+    const descripLarga = document.createElement('p');
+    descripLarga.textContent = product.descripLarga;
+
+    const material = document.createElement('p');
+    material.textContent = `Material: ${product.material}`;
+
+    const color = document.createElement('p');
+    color.textContent = `Color: ${product.color}`;
+
+    const buttonCarrito = document.createElement('button');
+    buttonCarrito.textContent = 'Añadir al carrito';
+    buttonCarrito.addEventListener('click', () => {
+        // Obtener el carrito actual o array vacío
+        const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        // Verificar si ya existe el producto por id
+        const existe = cartProducts.find(p => p.id === product.id);
+        if (!existe) {
+            product.cantidad = 1; // Añadir cantidad inicial
+            cartProducts.push(product);
+            localStorage.setItem('cart', JSON.stringify(cartProducts));
+            console.log('Producto agregado al carrito');
+            alert(`${product.title} ha sido añadido al carrito`);
+        } else {
+            const index = cartProducts.findIndex(p => p.id === product.id);
+            cartProducts[index].cantidad += 1;
+            localStorage.setItem('cart', JSON.stringify(cartProducts));
+            alert(`Se sumó una unidad más de ${product.title} al carrito`);
+        }
+    });
+
+    const buttonComprar = document.createElement('button');
+    buttonComprar.textContent = 'Comprar';
+    buttonComprar.setAttribute("onclick", "window.location.href = './graciasPorCompra.html'")
+
+    infoContainer.appendChild(title);
+    infoContainer.appendChild(price);
+    infoContainer.appendChild(descripLarga);
+    infoContainer.appendChild(material);
+    infoContainer.appendChild(color);
+    infoContainer.appendChild(buttonCarrito);
+    infoContainer.appendChild(buttonComprar);
+
+    detalle.appendChild(imgContainer);
+    detalle.appendChild(infoContainer);
+
+    return detalle;
 }
 
 function renderProducts(product) {
     //sirve para la seccion inicio
     if (contProdDet) {
 
-        const card = createProductCard(product);
-        contProdDet.appendChild(card);
+        const detalle = createProductCard(product);
+        contProdDet.appendChild(detalle);
 
         //sirve para seccion de ofertas 
     } else {
