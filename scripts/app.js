@@ -129,7 +129,7 @@ getProducts();
 
 //localiza la etiqut que contendra los preductos
 const contenedorProductos = document.querySelector('.product-container');
-const contenedorOfertas = document.querySelector('.ofertas-container');
+// const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
 
