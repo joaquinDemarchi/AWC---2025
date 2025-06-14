@@ -486,6 +486,71 @@ footer {
     background-color: orangered;
 }
 
+/* ------------------ DETALLE DE PRODUCTO --------------------- */
+.product-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0 40px 0;
+  background: #fff3e0;
+}
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  align-items: flex-start;
+}
+.product-detalle .img-container {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+}
+.product-detalle .img-container img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+.product-detalle .info-container {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.product-detalle .info-container h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-gris-texto);
+}
+.product-detalle .info-container p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+.product-detalle .info-container button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-naranja);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.product-detalle .info-container button:hover {
+  background: var(--color-naranja-oferta);
+}
+
 /* ------------------ CARRITO --------------------- */
 
 .carritoProd {
@@ -642,7 +707,84 @@ footer {
     background-color: var(--color-naranja-oscuro);
 }
 
+/* --------------------------------------------- */
+/* ------------------ ADMIN --------------------- */
+/* --------------------------------------------- */
 
+/* ------------------ SECCION PRINCIPAL --------------------- */
+.admin-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 30px 0 40px 0;
+}
+.admin-links a {
+  background: var(--color-naranja);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.admin-links a:hover {
+  background: var(--color-naranja-oferta);
+}
+
+/* ------------------ FORM AGREGAR PRODUCTO --------------------- */
+
+#formAgrProduct {
+  max-width: 400px;
+  margin: 30px auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+#formAgrProduct input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+#formAgrProduct button[type="submit"] {
+  background: var(--color-naranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#formAgrProduct button[type="submit"]:hover {
+  background: var(--color-naranja-oferta);
+}
+
+/* ------------------ SECCION PRINCIPAL --------------------- */
+.admin-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 30px 0 40px 0;
+}
+.admin-links a {
+  background: var(--color-naranja);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.admin-links a:hover {
+  background: var(--color-naranja-oferta);
+}
 
 /* Media queries*/
 
@@ -696,6 +838,18 @@ footer {
     .espacio{
         height: 80px;
     }
+
+  .admin-links {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .admin-links a {
+    width: 90%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px 0;
+  }
 }
 
 @media (min-width: 378px) and (max-width: 600px) {
@@ -839,3 +993,23 @@ footer {
         width: calc(25% - 30px);
     }
 }
+
+
+@media (max-width: 700px) {
+  .product-detail {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  .product-detalle .img-container {
+    min-width: 0;
+    justify-content: flex-start;
+  }
+  .product-detalle .img-container img {
+    max-width: 100%;
+  }
+  .product-detalle .info-container h3 {
+    font-size: 1.4rem;
+  }
+}
+
