@@ -3,30 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TIENDA ONLINE - Productos</title>
+    <title>ADMIN - Lista de Productos</title>
     <link rel="icon" href="../img/logo.png" type="image/png" />
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
     <nav class="menu1">
       <div class="logo">
-        <a href="index.html">
-          <img src="../img/logo.png" alt="Logo" />
+        <a href="../index.html">
+            <img src="../img/logo.png" alt="Logo">
         </a>
       </div>
-      <div class="buscador">
+      <!-- <div class="buscador" >
         <input
           type="text"
           placeholder="Buscar productos..."
           class="search-input"
         />
       </div>
-      <div class="botones">
+      <div class="botones" >
         <button class="ingresar">Ingresar</button>
         <a href="carrito.html">
           <button class="carrito">🛒</button>
         </a>
-      </div>
+      </div> -->
+      <div class="Cartel-Admin" >
+        <a href="./admin.html">
+            <p>ADMIN</p>
+        </a>
+    </div>
     </nav>
 
     <nav class="menu2">
@@ -45,9 +50,20 @@
       <p>Esta es la lista de todos los productos disponibles para editar</p>
     </header>
 
+
     <section class="ProductosAdminSeccion">
       <div class="ProductosAdmin">
-        <!-- ... -->
+         <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="ProductosAdminTable">
+                   
+                </tbody>  
       </div>
     </section>
 

@@ -110,6 +110,24 @@ textarea {
     color: white;
 }
 
+.Cartel-Admin{
+    background-color: var(--color-blanco);
+    height: 40px;
+    width: 90px;
+    padding: 0; 
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Cartel-Admin a{
+    color: var(--color-naranja-oscuro);
+    text-decoration: none;
+}
 
 /*MENU 2*/
 

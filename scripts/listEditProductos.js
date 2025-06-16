@@ -40,73 +40,36 @@ getProducts();
 
 ///------------------------------------------------------
 
-//CREAR Y LLENAR CARDS
 
-const contenedorProdAdmin = document.querySelector(".ProductosAdmin");
-
-//localiza la etiqut que contendra los preductos
-
-const tabla = document.createElement("table");
-  tabla.classList.add("tablaProdAdmin");
-
-
-  const caption = document.createElement("caption");
-  caption.classList.add("tablaTitulo"); 
-  caption.textContent = "Productos de la tabla";
-
-
-  const tituColumnas = document.createElement("thead");
-  tituColumnas.textContent = product.title;
-  const filaTituCol = document.createElement("tr")
-
-  tituColumnas.appendChild(filaTituCol);
-
-  const columnaTitulo = document.createElement("th");
-  columnaTitulo.textContent = "Titulo";   
-  filaTituCol.appendChild(columnaTitulo);
-
-  const columnaPrecio = document.createElement("th");
-  columnaPrecio.textContent = "Precio";
-  filaTituCol.appendChild(columnaPrecio);
-  
-  const columnaImagen = document.createElement("th");
-  columnaImagen.textContent = "Imagen";
-  filaTituCol.appendChild(columnaImagen);
-  
-  // const columnaDescrip = document.createElement("th");
-  // columnaDescrip.textContent = "Descripcion";
-  // filaTituCol.appendChild(columnaDescrip);
-
-  const filaItems = document.createElement("tr");
-  filaItems.textContent = "Acciones";
-  tabla.appendChild(filaItems);
+const contenedorProdAdmin = document.querySelector(".ProductosAdminTable");
 
 function createProductTable(product) {
 
+  const filaItems = document.createElement("tr");
   const titleItem = document.createElement("td");
   titleItem.textContent = product.title; 
-  filaItems.appendChild(titleItem);
-
+  
   const priceItem = document.createElement("td");
   priceItem.textContent = `$${product.price}`;
   priceItem.classList.add("precioProd");
-  filaItems.appendChild(priceItem);
-
+  
   const imgItem = document.createElement("td");
   imgItem.src = product.thumbnail;
-  filaItems.appendChild(imgItem);
-
+  
   const btnEditItem = document.createElement("button");
   btnEditItem.textContent = "Editar";
-  button.setAttribute(
+  btnEditItem.setAttribute(
     "onclick",
     "window.location.href = './editProductos.html'"
   );
+  
+  
+  filaItems.appendChild(titleItem);
+  filaItems.appendChild(priceItem);
+  filaItems.appendChild(imgItem);
   filaItems.appendChild(btnEditItem);
-
-
-
-  return tabla;
+  
+  return filaItems;
 }
 
 // Verifica si los contenedores existen antes de usarlos
