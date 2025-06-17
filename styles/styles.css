@@ -729,7 +729,7 @@ footer {
 /* ------------------ ADMIN --------------------- */
 /* --------------------------------------------- */
 
-/* ------------------ SECCION PRINCIPAL --------------------- */
+/* ------------------ ADMIN: SECCION PRINCIPAL --------------------- */
 .admin-links {
   display: flex;
   justify-content: center;
@@ -750,7 +750,7 @@ footer {
   background: var(--color-naranja-oferta);
 }
 
-/* ------------------ FORM AGREGAR PRODUCTO --------------------- */
+/* ------------------ ADMIN: FORMULARIO AGREGAR PRODUCTO --------------------- */
 
 #formAgrProduct {
   max-width: 400px;
@@ -769,7 +769,7 @@ footer {
   border-radius: 6px;
   font-size: 1rem;
 }
-#formAgrProduct button[type="submit"] {
+#formAgrProduct #add-button {
   background: var(--color-naranja);
   color: #fff;
   border: none;
@@ -779,28 +779,122 @@ footer {
   cursor: pointer;
   transition: background 0.2s;
 }
-#formAgrProduct button[type="submit"]:hover {
+#formAgrProduct #add-button:hover {
   background: var(--color-naranja-oferta);
 }
 
-/* ------------------ SECCION PRINCIPAL --------------------- */
-.admin-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin: 30px 0 40px 0;
+/* ------------------ ADMIN: TABLA DE PRODUCTO PARA EDITAR --------------------- */
+.ProductosAdmin {
+  max-width: 700px;
+  margin: 30px auto 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 20px 10px;
 }
-.admin-links a {
+.ProductosAdmin table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ProductosAdmin th, .ProductosAdmin td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.ProductosAdmin th {
   background: var(--color-naranja);
   color: #fff;
-  padding: 12px 22px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-weight: 600;
+}
+.ProductosAdmin td {
+  color: var(--color-gris-texto);
+  font-size: 1rem;
+}
+.ProductosAdmin button {
+  background: var(--color-naranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
   transition: background 0.2s;
 }
-.admin-links a:hover {
+.ProductosAdmin button:hover {
+  background: var(--color-naranja-oferta);
+}
+
+.filaProdAdmin {
+  transition: background 0.2s;
+}
+.filaProdAdmin:hover {
+  background: #fff3e0;
+}
+.tituloProd {
+  font-weight: 500;
+  color: var(--color-gris-texto);
+}
+.precioProd {
+  color: var(--color-naranja-oferta);
+  font-weight: bold;
+}
+/* .imgProd {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+} */
+.btnEditProd {
+  background: var(--color-naranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btnEditProd:hover {
+  background: var(--color-naranja-oferta);
+}
+.ProductosAdmin td.accionesProd {
+  text-align: center;
+}
+.btnEditProd {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* ------------------ ADMIN: FORMULARIO EDITAR PRODUCTO --------------------- */
+.container form {
+  max-width: 400px;
+  margin: 30px auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.container form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.container #update-button {
+  background: var(--color-naranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.container #update-button:hover {
   background: var(--color-naranja-oferta);
 }
 
@@ -867,6 +961,14 @@ footer {
     text-align: center;
     font-size: 1rem;
     padding: 12px 0;
+  }
+
+  .ProductosAdmin {
+    padding: 10px 2px;
+  }
+  .ProductosAdmin th, .ProductosAdmin td {
+    padding: 8px 4px;
+    font-size: 0.95rem;
   }
 }
 
@@ -1030,4 +1132,6 @@ footer {
     font-size: 1.4rem;
   }
 }
+
+
 

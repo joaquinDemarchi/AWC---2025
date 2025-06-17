@@ -4,19 +4,6 @@ const TABLE_NAME = 'Table 1';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 
-// Función para capturar el ID del producto de la URL
-// y mostrarlo en la consola
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Obtener el ID del producto de la URL
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const productId = urlParams.get('id');
-
-//     console.log("id de producto: " + productId)
-
-//     renderProducts(productId);
-// });
-
-
 // Función para traer del AIRTABLE Y renderizar los productos en el HTML
 const getProducts = async () => {
 

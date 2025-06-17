@@ -23,7 +23,7 @@ const getProducts = async () => {
 
     const productsMaped = data.records.map(item => {
         return {
-            id: item.fields.id,
+            id: item.id,
             title: item.fields.title,
             description: item.fields.description,
             thumbnail: item.fields.thumbnail,
@@ -46,28 +46,34 @@ const contenedorProdAdmin = document.querySelector(".ProductosAdminTable");
 function createProductTable(product) {
 
   const filaItems = document.createElement("tr");
+  filaItems.classList.add("filaProdAdmin");
   const titleItem = document.createElement("td");
   titleItem.textContent = product.title; 
+  titleItem.classList.add("tituloProd");
   
   const priceItem = document.createElement("td");
   priceItem.textContent = `$${product.price}`;
   priceItem.classList.add("precioProd");
   
-  const imgItem = document.createElement("td");
-  imgItem.src = product.thumbnail;
+  // const imgItem = document.createElement("td");
+  // imgItem.src = product.thumbnail;
+  // imgItem.classList.add("imgProd");
   
   const btnEditItem = document.createElement("button");
   btnEditItem.textContent = "Editar";
-  btnEditItem.setAttribute(
-    "onclick",
-    "window.location.href = './editProductos.html'"
-  );
+  btnEditItem.classList.add("btnEditProd");
+  btnEditItem.addEventListener('click', () => {
+        window.location.href = `../admin/editProductos.html?id=${product.id}`;
+
+    })
   
-  
+  const accionesItem = document.createElement("td");
+  accionesItem.classList.add("accionesProd");
+  accionesItem.appendChild(btnEditItem);
+
   filaItems.appendChild(titleItem);
   filaItems.appendChild(priceItem);
-  filaItems.appendChild(imgItem);
-  filaItems.appendChild(btnEditItem);
+  filaItems.appendChild(accionesItem);
   
   return filaItems;
 }

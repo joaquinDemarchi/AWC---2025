@@ -50,13 +50,20 @@
     </header>
 
     <section class="ProductosDestacados">
-      <!-- <div>
-            <h2>Productos con descuentos increibles</h2>
-        </div> -->
-      <div class="product-container"></div>
+      <div class="container">
+        <main>
+            <form onsubmit="updateSubmit(event)">
+                <input type="text" id="product-title" placeholder="Nombre Producto">
+                <input type="text" id="product-price" placeholder="Precio">
+                <input type="text" id="product-description" placeholder="Descripcion">
+                <input type="text" id="product-thumbnail" placeholder="Imagen">
+                <input type="submit" value="Actualizar" id="update-button">
+            </form>
+        </main>
+      </div>
     </section>
 
     <footer id="footer-container"></footer>
   </body>
-  <script src="./scripts/productos.js"></script>
+  <script src="../scripts/editProductos.js"></script>
 </html>
