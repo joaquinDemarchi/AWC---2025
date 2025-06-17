@@ -144,6 +144,7 @@ function createProductCard(product) {
     img.src = product.thumbnail;
     img.alt = product.title;
     img.setAttribute("onclick", "window.location.href = './detalleProducto.html?id=" + product.id + "'");
+    img.setAttribute("onerror", "this.src='./img/zapas.webp'");
 
     //titulo
     const title = document.createElement('h3');

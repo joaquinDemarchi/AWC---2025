@@ -52,7 +52,7 @@ function createProductTable(product) {
   titleItem.classList.add("tituloProd");
   
   const priceItem = document.createElement("td");
-  priceItem.textContent = `$${product.price}`;
+  priceItem.textContent = `$ ${product.price}`;
   priceItem.classList.add("precioProd");
   
   // const imgItem = document.createElement("td");
