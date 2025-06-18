@@ -12,7 +12,7 @@ function createProductCartCard(product) {
     title.textContent = product.title;
 
     const price = document.createElement('p');
-    price.textContent = `$${product.price}`;
+    price.textContent = `$${product.price.toLocaleString('es-AR')}`;
 
     const cant = document.createElement('p');
     cant.textContent = `Cantidad: ${product.cantidad}`;
@@ -63,7 +63,7 @@ function renderCartProducts(list){
     });
     if (totalPrice) {
         const total = list.reduce((acc, prod) => acc + (prod.price * (prod.cantidad || 1)), 0);
-        totalPrice.textContent = `Total: $${total.toFixed(0)}`;
+        totalPrice.textContent = `Total: $ ${Number(total).toLocaleString('es-AR')}`;
         totalPrice.classList.add('totalCarritoP');
     }
 }

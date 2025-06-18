@@ -144,7 +144,7 @@ function createProductCard(product) {
     img.src = product.thumbnail;
     img.alt = product.title;
     img.setAttribute("onclick", "window.location.href = './detalleProducto.html?id=" + product.id + "'");
-
+    img.setAttribute("onerror", "this.src='./img/placeholder.svg'"); 
     //titulo
     const title = document.createElement('h3');
     title.textContent = product.title;
@@ -155,7 +155,7 @@ function createProductCard(product) {
 
     //precio
     const price = document.createElement('p');
-    price.textContent = `$${product.price}`;
+    price.textContent = `$${product.price.toLocaleString('es-AR')}`;
     price.classList.add('precioProd');
 
     //boton compra con carrito
