@@ -152,7 +152,11 @@ function createProductCard(product) {
 
     //descrip
     const description = document.createElement('p');
-    description.textContent = 'Aqui va la descripcion del producto. Debe tener un numero de caracteres determminado';
+    //description.textContent = 'Aqui va la descripcion del producto. Debe tener un numero de caracteres determminado';
+    description.textContent = product.description.length > 60 ?
+        product.description.slice(0, 60) + '...' :
+        product.description;
+
 
     //precio
     const price = document.createElement('p');
