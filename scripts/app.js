@@ -9,7 +9,7 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 //ARR DONDE SE GUARDAN LOS PRODUCTOS DEL CARRITO
 
-const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+// const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
 //AIR TABLE: PARA LISTAR PRODUCTOS 
 //PROFE
@@ -33,7 +33,8 @@ const getProducts = async () => {
             title: item.fields.title,
             description: item.fields.description,
             thumbnail: item.fields.thumbnail,
-            price: item.fields.price
+            price: item.fields.price,
+            prodDestacado: item.fields.prodDestacado
         };
     })
     console.log(productsMaped);
@@ -49,7 +50,6 @@ getProducts();
 
 //localiza la etiqut que contendra los preductos
 const contenedorProductos = document.querySelector('.product-container');
-// const contenedorOfertas = document.querySelector('.ofertas-container');
 
 function createProductCard(product) {
 
@@ -77,25 +77,24 @@ function createProductCard(product) {
         product.description.slice(0, 60) + '...' :
         product.description;
 
-
     //precio
     const price = document.createElement('p');
     price.textContent = `$${product.price.toLocaleString('es-AR')}`;
     price.classList.add('precioProd');
 
-    //boton compra con carrito
-    const button = document.createElement('button');
-    button.textContent = 'Añadir al carrito';
+     //boton compra con carrito
+    // const button = document.createElement('button');
+    // button.textContent = 'Añadir al carrito';
     // button.setAttribute("onclick","window.location.href = './detalleProducto.html'")
-    button.addEventListener('click', () => {
-        const existe = cartProducts.find(p => p.title === product.title);
-        if (!existe) {
-            cartProducts.push(product);
-            localStorage.setItem('cart', JSON.stringify(cartProducts));
-            //actualiza el LS 
-            console.log('Producto agregado al carrito');
-        }
-    });
+    // button.addEventListener('click', () => {
+    //     const existe = cartProducts.find(p => p.title === product.title);
+    //     if (!existe) {
+    //         cartProducts.push(product);
+    //         localStorage.setItem('cart', JSON.stringify(cartProducts));
+    //         //actualiza el LS 
+    //         console.log('Producto agregado al carrito');
+    //     }
+    // });
 
     //Añade todos los elementos CREADOS a la tarjeta
     card.appendChild(img);
@@ -117,8 +116,11 @@ function renderProducts(list) {
     //sirve para la seccion inicio
     if (contenedorProductos) {
         list.forEach(product => {
-            const card = createProductCard(product);
-            contenedorProductos.appendChild(card);
+            if (product.prodDestacado == 'true') {
+                // Si el producto es destacado, lo crea y lo agrega al contenedor
+                const card = createProductCard(product);
+                contenedorProductos.appendChild(card);
+            }  
         });
         //sirve para seccion de ofertas 
     } else {
