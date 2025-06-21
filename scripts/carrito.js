@@ -46,6 +46,7 @@ function renderCartProducts(list){
     const contenedorProdCart = document.querySelector('.cart-container');
     contenedorProdCart.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
     const totalPrice = document.querySelector('.totalCarrito');
+    const clearCartButton = document.querySelector('.btn-finCompra');
     //mensaje si el carrito está vacío
     if (list.length === 0) {
         const emptyMessage = document.createElement('p');
@@ -53,6 +54,9 @@ function renderCartProducts(list){
         contenedorProdCart.appendChild(emptyMessage);
         if (totalPrice) {
             totalPrice.textContent = '';
+        }
+        if (clearCartButton) {
+            clearCartButton.style.display = 'none';
         }
         return;
     }
@@ -66,6 +70,9 @@ function renderCartProducts(list){
         totalPrice.textContent = `Total: $ ${Number(total).toLocaleString('es-AR')}`;
         totalPrice.classList.add('totalCarritoP');
     }
+    if (clearCartButton) {
+        clearCartButton.style.display = 'inline-block';
+    }
 }
 
 function clearCart() {
@@ -78,8 +85,8 @@ function clearCart() {
     totalPrice.textContent = 'Total: $0';
     totalPrice.classList.add('totalCarritoP');
     
-    alert('Compra finalizada con éxito');
-    window.location.href = 'index.html';
+    // alert('Compra finalizada con éxito');
+    window.location.href = './graciasPorCompra.html';
 }
 
 const clearCartButton = document.querySelector('.btn-finCompra');
