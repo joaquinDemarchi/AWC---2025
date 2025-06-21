@@ -7,47 +7,6 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 
 
-// AIR TABLE: PARA AGREGAR PRODUCTOS
-
-// async function crearProducto(product) {
-
-//     const itemAirtable = {
-//         fields: product
-//     };
-
-// const response = await fetch(API_URL, {
-//     headers: {
-//         'Authorization': `Bearer ${API_TOKEN}`,
-//         'Content-Type': 'application/json'
-//     },
-// });
-
-//     fetch(API_URL, {
-//         method: 'POST',
-//         headers:{
-//             'Authorization': `Bearer ${API_TOKEN}`,
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(itemAirtable)
-//     }).then(data => console.log(data));
-
-// }
-
-// crearProducto() 
-
-
-///------------------------------------------------------
-//const products = [];
-
-//CONEXION CON API DE PRUDUCTOS 
-
-// const getProducts = async () => {
-//     const response = await fetch('https://dummyjson.com/products');
-//     const data = await response.json();
-//     console.log('data.products', data.products);
-//     renderProducts(data.products);
-// }
-
 //ARR DONDE SE GUARDAN LOS PRODUCTOS DEL CARRITO
 
 const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
@@ -82,45 +41,6 @@ const getProducts = async () => {
 }
 
 
-
-//OTRA POSIBLE SOLUCION
-
-// const getProducts = async () => {
-//     try {
-//         const response = await fetch(API_URL, {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': `Bearer ${API_TOKEN}`,
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-//         console.log('Respuesta completa de Airtable:', data);
-
-//         if (!data.records || !Array.isArray(data.records)) {
-//             throw new Error('La respuesta no contiene records o no es un array');
-//         }
-
-//         const productsMaped = data.records.map(item => {
-//             return {
-//                 title: item.fields?.title || 'Sin título',
-//                 description: item.fields?.description || 'Sin descripción',
-//                 thumbnail: item.fields?.thumbnail || '',
-//                 price: item.fields?.price || 0
-//             };
-//         });
-
-//         console.log('Productos mapeados:', productsMaped);
-//         renderProducts(productsMaped);
-//     } catch (error) {
-//         console.error('Error al obtener productos:', error);
-//     }
-// }
 
 getProducts();
 ///------------------------------------------------------
@@ -201,16 +121,6 @@ function renderProducts(list) {
             contenedorProductos.appendChild(card);
         });
         //sirve para seccion de ofertas 
-    } else if (contenedorOfertas) {
-
-        list.forEach(product => {
-            console.log(product.discountPercentage);
-
-            if (product.discountPercentage > 15) {
-                const card = createProductCard(product);
-                contenedorOfertas.appendChild(card);
-            }
-        })
     } else {
         console.warn('No se encontró ningun contenedor de productos');
     }
