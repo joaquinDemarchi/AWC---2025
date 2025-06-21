@@ -5,6 +5,23 @@ const BASE_ID = 'appjgwL9EfmDSYv7l';
 const TABLE_NAME = 'Table 1';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
+let allProducts = [];
+
+function filterProducts(letras) {
+    const filtered = allProducts.filter(product =>
+        product.title.toLowerCase().includes(letras.toLowerCase()) ||
+        product.description.toLowerCase().includes(letras.toLowerCase())
+    );
+    renderProducts(filtered);
+}
+
+const searchInput = document.querySelector('.search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        filterProducts(e.target.value);
+    });
+}
+
 const getProducts = async () => {
 
     const response = await fetch(API_URL, {
@@ -26,7 +43,7 @@ const getProducts = async () => {
             price: item.fields.price
         };
     })
-    console.log(productsMaped);
+    allProducts = productsMaped;
     renderProducts(productsMaped);
 }
 
@@ -104,6 +121,7 @@ function createProductCard(product) {
 function renderProducts(list) {
     //sirve para la seccion inicio
     if (contenedorProductos) {
+        contenedorProductos.innerHTML = ''; 
         list.forEach(product => {
             const card = createProductCard(product);
             contenedorProductos.appendChild(card);
