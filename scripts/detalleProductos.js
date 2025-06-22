@@ -90,7 +90,7 @@ function createProductCard(product) {
     title.textContent = product.title;
 
     const price = document.createElement('p');
-    price.textContent = `Precio: $${product.price}`;
+    price.textContent = `Precio: $${product.price.toLocaleString('es-AR')}`;
 
     const descripLarga = document.createElement('p');
     descripLarga.textContent = product.descripLarga;
@@ -103,6 +103,8 @@ function createProductCard(product) {
 
     const buttonCarrito = document.createElement('button');
     buttonCarrito.textContent = 'Añadir al carrito';
+    buttonCarrito.id = 'btn-add-cart';
+    // buttonCarrito.classList.add('btn-add-cart');
     buttonCarrito.addEventListener('click', () => {
         // Obtener el carrito actual o array vacío
         const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIENDA ONLINE - Login</title>
+    <link rel="icon" href="./img/logo.png" type="image/png">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500&display=swap">
+</head>
+<body>
+    <nav class="menu1">
+    <div class="logo">
+        <a href="index.html">
+            <img src="./img/logo.png" alt="Logo">
+        </a>
+    </div>
+    <!-- <div class="buscador">
+        <input type="text" placeholder="Buscar productos..." class="search-input" >
+    </div> -->
+    <div class="botones">
+         <a href="login.html">
+             <button class="ingresar">Ingresar</button>
+        </a>
+        <a href="carrito.html">
+            <button class="carrito">🛒</button>
+        </a>
+    </div>
+</nav>
+
+<!-- <nav class="menu2">
+    <ul class="listaMenu2">
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./productos.html">Productos</a></li>
+        <li><a href="./nosotros.html">Nosotros</a></li>
+        <li><a href="./contacto.html">Contacto</a></li>
+    </ul>
+</nav> -->
+
+<div class="espacio">
+</div>
+
+    <main class="main-content">
+        <section class="login-section">
+            <div class="login-container">
+                <h2>Iniciar Sesión</h2>
+                <form class="login-form">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Correo electrónico" required>
+
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" name="password" placeholder="Contraseña" required>
+
+                    <button type="submit" class="btn-login">Ingresar</button>
+                </form>
+                <p class="login-ayuda">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-container"></footer>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/login.js"></script>
+</body>
+</html>
