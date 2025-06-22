@@ -1064,16 +1064,15 @@ footer {
   background: var(--color-naranja-oferta);
 }
 
-/* Media queries*/
-
-/* cambai tamañno de tarjetas el mediaquerie */
+/* ------------------------------------------------------ */
+/* ------------------ MEDIA QUERIES --------------------- */
+/* ------------------------------------------------------ */
 
 
 @media (max-width: 378px) {
     .producto {
         /* width: calc(33.333% - 30px); */
-        max-width: 90%;
-        max-width: none !important; 
+        max-width: 85%;
         margin: 5px auto;
     }
 
@@ -1083,6 +1082,24 @@ footer {
 
     .menu2{
         padding: 5px;
+    }
+
+    .listaMenu2 li a {
+        font-size: 0.85rem;
+        padding: 4px 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    .listaMenu2 li a {
+        font-size: 0.70rem;
+        padding: 4px 6px;
+    }
+}
+
+@media (min-width: 378px) and (max-width: 600px) {
+    .espacio{
+        height: 110px;
     }
 }
 
@@ -1107,6 +1124,30 @@ footer {
     }
 }
 
+@media (min-width: 600px) {
+
+    .listaMenu2 {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .listaMenu2 li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .listaMenu2 li a {
+        display: block;
+        padding: 8px;
+    }
+
+    .producto {
+        /* width: calc(33.333% - 30px); */
+        max-width: 40%;
+    }
+    
+}
 
 @media (max-width: 600px) {
     .buscador input {
@@ -1138,12 +1179,38 @@ footer {
   }
 }
 
-@media (min-width: 378px) and (max-width: 600px) {
-    .espacio{
-        height: 110px;
-    }
-}
+@media (max-width: 700px) {
+  .product-detalle .img-container img {
+    max-width: 100%;
+  }
 
+  .product-detail {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .product-detalle {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .product-detalle .img-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .product-detalle .info-container {
+    width: 100%;
+  }
+
+  .product-detalle .info-container h3 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}
 
 @media (max-width: 768px) {
     .footerContainer {
@@ -1187,37 +1254,39 @@ footer {
         width: 100%;
         margin-top: 10px;
     }
+
+     .product-detalle .img-container img {
+    max-width: 100%;
+  }
+
+  .product-detail {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .product-detalle {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .product-detalle .img-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .product-detalle .info-container {
+    width: 100%;
+  }
+
+  .product-detalle .info-container h3 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
 }
 
-@media (max-width: 900px) {
-    .producto {
-        /* width: calc(33.333% - 30px); */
-        max-width: 60%;
-    }
-}
-
-@media (min-width: 600px) {
-
-    .listaMenu2 {
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .listaMenu2 li {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .listaMenu2 li a {
-        display: block;
-        padding: 8px;
-    }
-
-    
-
-}
-/* tablets */
 @media (min-width: 900px) {
     .producto {
         width: calc(33.333% - 30px);
@@ -1273,7 +1342,7 @@ footer {
 }
     
 }
-/* compu */
+
 @media (min-width: 1200px) {
     .producto {
         width: calc(25% - 30px);
@@ -1281,39 +1350,7 @@ footer {
 }
 
 
-@media (max-width: 700px) {
-  .product-detalle .img-container img {
-    max-width: 100%;
-  }
-
-  .product-detail {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .product-detalle {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .product-detalle .img-container {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .product-detalle .info-container {
-    width: 100%;
-  }
-
-  .product-detalle .info-container h3 {
-    font-size: 1.6rem;
-    text-align: center;
-  }
-}
 
 
-/* ------------- */
+
 
