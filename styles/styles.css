@@ -949,7 +949,7 @@ footer {
   background: var(--color-naranja-oferta);
 }
 
-/* ------------------ ADMIN: TABLA DE PRODUCTO PARA EDITAR --------------------- */
+/* ------------------ ADMIN: TABLA DE PRODUCTO PARA EDITAR o ELIMINAR--------------------- */
 .ProductosAdmin {
   max-width: 700px;
   margin: 30px auto 40px auto;
@@ -977,7 +977,6 @@ footer {
   font-size: 1rem;
 }
 .ProductosAdmin button {
-  background: var(--color-naranja);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -985,9 +984,6 @@ footer {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
-}
-.ProductosAdmin button:hover {
-  background: var(--color-naranja-oferta);
 }
 
 .filaProdAdmin {
@@ -1013,12 +1009,6 @@ footer {
 } */
 .btnEditProd {
   background: var(--color-naranja);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 16px;
-  font-size: 1rem;
-  cursor: pointer;
   transition: background 0.2s;
 }
 .btnEditProd:hover {
@@ -1032,7 +1022,17 @@ footer {
   margin: 0 auto;
 }
 
-/* ------------------ ADMIN: FORMULARIO EDITAR PRODUCTO --------------------- */
+.btnDeleteProd {
+  background-color: #e74c3c;
+  margin-left: 5px;
+}
+
+.btnDeleteProd:hover {
+  background-color:  #c0392b;
+}
+
+
+/* ------------------ ADMIN: FORMULARIO EDITAR o ELIMINAR PRODUCTO --------------------- */
 .container form {
   max-width: 400px;
   margin: 30px auto 40px auto;

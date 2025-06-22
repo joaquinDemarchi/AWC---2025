@@ -11,32 +11,77 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 const getProducts = async () => {
 
-    const response = await fetch(API_URL, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${API_TOKEN}`,
-            'Content-Type': 'application/json'
-        }
-    });
-    const data = await response.json();
-    console.log('data', data);
+  const response = await fetch(API_URL, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json'
+    }
+  });
+  const data = await response.json();
+  console.log('data', data);
 
-    const productsMaped = data.records.map(item => {
-        return {
-            id: item.id,
-            title: item.fields.title,
-            description: item.fields.description,
-            thumbnail: item.fields.thumbnail,
-            price: item.fields.price
-        };
-    })
-    console.log(productsMaped);
-    renderProducts(productsMaped);
+  const productsMaped = data.records.map(item => {
+    return {
+      id: item.id,
+      title: item.fields.title,
+      description: item.fields.description,
+      thumbnail: item.fields.thumbnail,
+      price: item.fields.price
+    };
+  })
+  console.log(productsMaped);
+  renderProducts(productsMaped);
 }
 
 
 
 getProducts();
+
+//ELIMINAR PRODUCTOS
+
+
+// prueba de modal nativo (dialog)
+function showNativeDeleteModal() {
+  return new Promise((resolve) => {
+    const dialog = document.getElementById('modal-confirm-delete');
+    if (!dialog) return resolve(false);
+    dialog.returnValue = '';
+    dialog.showModal();
+
+    function onClose() {
+      resolve(dialog.returnValue === 'yes');
+      dialog.removeEventListener('close', onClose);
+    }
+    dialog.addEventListener('close', onClose);
+  });
+}
+
+const deleteProduct = async (productId, rowElement) => {
+  const confirmDelete = await showNativeDeleteModal();
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`${API_URL}/${productId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${API_TOKEN}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      alert("Producto eliminado con éxito.");
+      rowElement.remove(); 
+    } else {
+      alert("Hubo un error al eliminar el producto.");
+    }
+  } catch (error) {
+    console.error("Error al eliminar el producto:", error);
+    alert("Error de red o servidor al intentar eliminar.");
+  }
+};
+
 
 ///------------------------------------------------------
 
@@ -48,33 +93,46 @@ function createProductTable(product) {
   const filaItems = document.createElement("tr");
   filaItems.classList.add("filaProdAdmin");
   const titleItem = document.createElement("td");
-  titleItem.textContent = product.title; 
+  titleItem.textContent = product.title;
   titleItem.classList.add("tituloProd");
-  
+
   const priceItem = document.createElement("td");
   priceItem.textContent = `$${product.price.toLocaleString('es-AR')}`;
   priceItem.classList.add("precioProd");
-  
+
   // const imgItem = document.createElement("td");
   // imgItem.src = product.thumbnail;
   // imgItem.classList.add("imgProd");
-  
+
   const btnEditItem = document.createElement("button");
   btnEditItem.textContent = "Editar";
   btnEditItem.classList.add("btnEditProd");
   btnEditItem.addEventListener('click', () => {
-        window.location.href = `../admin/editProductos.html?id=${product.id}`;
+    window.location.href = `../admin/editProductos.html?id=${product.id}`;
+  })
 
-    })
-  
+  const btnDeteleItem = document.createElement("button");
+  btnDeteleItem.textContent = "Eliminar";
+  btnDeteleItem.classList.add("btnDeleteProd");
+  btnDeteleItem.addEventListener('click', () => {
+    deleteProduct(product.id, filaItems);
+  });
+  // btnDeteleItem.addEventListener('click', () => {
+  //       window.location.href = `../admin/deleteProductos.html?id=${product.id}`;
+  //   })
+
+
+
+
   const accionesItem = document.createElement("td");
   accionesItem.classList.add("accionesProd");
   accionesItem.appendChild(btnEditItem);
+  accionesItem.appendChild(btnDeteleItem);
 
   filaItems.appendChild(titleItem);
   filaItems.appendChild(priceItem);
   filaItems.appendChild(accionesItem);
-  
+
   return filaItems;
 }
 
