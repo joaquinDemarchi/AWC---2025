@@ -45,6 +45,50 @@ textarea {
 }
 
 
+/* ------------------ MODALES --------------------- */
+dialog[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(60,60,120,0.15);
+  background: rgba(0,0,0,0.15);
+  z-index: 2000;
+}
+dialog form {
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: 10px;
+  min-width: 260px;
+  box-shadow: 0 2px 12px rgba(60,60,120,0.15);
+  text-align: center;
+}
+dialog p {
+  margin-bottom: 18px;
+}
+dialog menu {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 0;
+  padding: 0;
+}
+dialog button {
+  background: var(--color-naranja);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+dialog button:hover {
+  background: var(--color-naranja-oscuro);
+}
+
 
 /*MENU 1*/
 

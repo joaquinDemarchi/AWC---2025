@@ -9,20 +9,40 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 // AIR TABLE: PARA AGREGAR PRODUCTOS
 
-const addToAirtable = async (product)=>{
-    
+
+const showAddModal = (mensaje) => {
+    const modal = document.getElementById('modal-add-feedback');
+    const msg = document.getElementById('modal-add-feedback-msg');
+    if (modal && msg) {
+        msg.textContent = mensaje;
+        modal.showModal();
+    }
+};
+
+const addToAirtable = async (product) => {
     const itemAirtable = {
         fields: product
     };
 
-    fetch(API_URL, {
-        method: 'POST',
-        headers:{
-            'Authorization': `Bearer ${API_TOKEN}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(itemAirtable)
-    }).then(data => console.log(data));
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${API_TOKEN}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(itemAirtable)
+        });
+        if (response.ok) {
+            showAddModal('El producto ha sido agregado a la base de datos.');
+        } else {
+            showAddModal('Hubo un error al agregar el producto.');
+        }
+        return response;
+    } catch (error) {
+        showAddModal('Error de red o servidor al intentar agregar el producto.');
+        return null;
+    }
 }
 
 

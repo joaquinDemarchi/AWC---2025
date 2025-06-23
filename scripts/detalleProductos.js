@@ -110,17 +110,25 @@ function createProductCard(product) {
         const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
         // Verificar si ya existe el producto por id
         const existe = cartProducts.find(p => p.id === product.id);
+        let mensaje = '';
         if (!existe) {
             product.cantidad = 1; // Añadir cantidad inicial
             cartProducts.push(product);
             localStorage.setItem('cart', JSON.stringify(cartProducts));
             console.log('Producto agregado al carrito');
-            alert(`${product.title} ha sido añadido al carrito`);
+            mensaje = `${product.title} ha sido añadido al carrito`;
         } else {
             const index = cartProducts.findIndex(p => p.id === product.id);
             cartProducts[index].cantidad += 1;
             localStorage.setItem('cart', JSON.stringify(cartProducts));
-            alert(`Se sumó una unidad más de ${product.title} al carrito`);
+            mensaje = `Se sumó una unidad más de ${product.title} al carrito`;
+        }
+        // Mostrar modal nativo
+        const modal = document.getElementById('modal-cart-feedback');
+        const msg = document.getElementById('modal-cart-feedback-msg');
+        if (modal && msg) {
+            msg.textContent = mensaje;
+            modal.showModal();
         }
     });
 
