@@ -57,6 +57,15 @@ function showNativeDeleteModal() {
   });
 }
 
+function showDeleteFeedbackModal(mensaje) {
+  const modal = document.getElementById('modal-delete-feedback');
+  const msg = document.getElementById('modal-delete-feedback-msg');
+  if (modal && msg) {
+    msg.textContent = mensaje;
+    modal.showModal();
+  }
+}
+
 const deleteProduct = async (productId, rowElement) => {
   const confirmDelete = await showNativeDeleteModal();
   if (!confirmDelete) return;
@@ -71,14 +80,14 @@ const deleteProduct = async (productId, rowElement) => {
     });
 
     if (response.ok) {
-      alert("Producto eliminado con éxito.");
+      showDeleteFeedbackModal("Producto eliminado con éxito.");
       rowElement.remove(); 
     } else {
-      alert("Hubo un error al eliminar el producto.");
+      showDeleteFeedbackModal("Hubo un error al eliminar el producto.");
     }
   } catch (error) {
     console.error("Error al eliminar el producto:", error);
-    alert("Error de red o servidor al intentar eliminar.");
+    showDeleteFeedbackModal("Error de red o servidor al intentar eliminar.");
   }
 };
 

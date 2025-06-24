@@ -29,7 +29,7 @@ El sistema cuenta con una página de login. Si el usuario ingresa como “ADMIN�
 
 Correo: admin@gmail.com
 
-Contraseña: admin 
+Contraseña: admin123 
 
 ### Componentes reutilizables
 El **header** y el **footer** se cargan dinámicamente en todas las páginas, asegurando coherencia visual y facilitando el mantenimiento.

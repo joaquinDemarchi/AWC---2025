@@ -116,7 +116,7 @@ function renderProducts(list) {
     //sirve para la seccion inicio
     if (contenedorProductos) {
         list.forEach(product => {
-            if (product.prodDestacado == 'true') {
+            if (product.prodDestacado.toLowerCase() == 'si') {
                 // Si el producto es destacado, lo crea y lo agrega al contenedor
                 const card = createProductCard(product);
                 contenedorProductos.appendChild(card);

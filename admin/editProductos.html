@@ -52,16 +52,37 @@
     <section class="ProductosDestacados">
       <div class="container">
         <main>
-            <form onsubmit="updateSubmit(event)">
+            <form onsubmit="updateSubmit(event)" id="editProductForm">
+                <label for="product-title" class="form-label">Nombre del producto</label>
                 <input type="text" id="product-title" placeholder="Nombre Producto">
+                <label for="product-price" class="form-label">Precio (solo números)</label>
                 <input type="text" id="product-price" placeholder="Precio">
+                <label for="product-description" class="form-label">Descripción corta</label>
                 <input type="text" id="product-description" placeholder="Descripcion">
+                <label for="product-descripLarga" class="form-label">Descripción larga</label>
+                <textarea name="product-descripLarga" id="product-descripLarga" placeholder="Descripcion larga"></textarea>
+                <label for="product-material" class="form-label">Material</label>
+                <input type="text" id="product-material" placeholder="Material">
+                <label for="product-color" class="form-label">Color</label>
+                <input type="text" id="product-color" placeholder="Color">
+                <label for="product-dest" class="form-label">¿Es destacado? (si/no)</label>
+                <input type="text" id="product-dest" placeholder="Destacado(true/false)">
+                <label for="product-thumbnail" class="form-label">URL de imagen</label>
                 <input type="text" id="product-thumbnail" placeholder="Imagen">
                 <input type="submit" value="Actualizar" id="update-button">
             </form>
         </main>
       </div>
     </section>
+
+    <dialog id="modal-edit-feedback">
+      <form method="dialog">
+        <p id="modal-edit-feedback-msg"></p>
+        <menu>
+          <button value="ok">OK</button>
+        </menu>
+      </form>
+    </dialog>
 
     <footer id="footer-container"></footer>
   </body>

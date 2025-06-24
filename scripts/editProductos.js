@@ -27,11 +27,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('#product-price').value = data.fields.price || '';
                 document.querySelector('#product-description').value = data.fields.description || '';
                 document.querySelector('#product-thumbnail').value = data.fields.thumbnail || '';
+                document.querySelector('#product-material').value = data.fields.material || '';
+                document.querySelector('#product-color').value = data.fields.color || '';
+                document.querySelector('#product-dest').value = data.fields.prodDestacado || '';
+                document.querySelector('#product-descripLarga').value = data.fields.descripLarga || '';
             }
         })
         .catch(error => console.error('Error cargando producto:', error));
     }
 });
+
+function showEditModal(mensaje, callback) {
+    const modal = document.getElementById('modal-edit-feedback');
+    const msg = document.getElementById('modal-edit-feedback-msg');
+    if (modal && msg) {
+        msg.textContent = mensaje;
+        modal.showModal();
+        modal.addEventListener('close', function handler() {
+            modal.removeEventListener('close', handler);
+            if (typeof callback === 'function') callback();
+        });
+    }
+}
 
 function updateSubmit(event){
     event.preventDefault();
@@ -41,7 +58,7 @@ function updateSubmit(event){
     const productId = urlParams.get('id');
     
     if(!productId) {
-        alert('No se especificó ID de producto');
+        showEditModal('No se especificó ID de producto');
         return;
     }
 
@@ -50,9 +67,13 @@ function updateSubmit(event){
     const price = parseFloat(document.querySelector('#product-price').value);
     const description = document.querySelector('#product-description').value.trim();
     const thumbnail = document.querySelector('#product-thumbnail').value.trim();
+    const material = document.querySelector('#product-material').value.trim();
+    const color = document.querySelector('#product-color').value.trim(); 
+    const prodDestacado = document.querySelector('#product-dest').value.trim(); 
+    const descripLarga = document.querySelector('#product-descripLarga').value.trim();  
 
     if(!title || isNaN(price)) {
-        alert('Título y precio son campos requeridos. El precio debe ser numérico.');
+        showEditModal('Título y precio son campos requeridos. El precio debe ser numérico.');
         return;
     }
 
@@ -60,7 +81,11 @@ function updateSubmit(event){
         title: title,
         price: price,
         description: description,
-        thumbnail: thumbnail
+        thumbnail: thumbnail,
+        material: material,
+        color: color,
+        prodDestacado: prodDestacado,
+        descripLarga: descripLarga
     };
 
     const itemAirtable = {
@@ -79,14 +104,15 @@ function updateSubmit(event){
     .then(data => {
         if(data.error) {
             console.error('Error detallado:', data);
-            alert(`Error al actualizar (${data.error.type}): ${data.error.message}`);
+            showEditModal(`Error al actualizar (${data.error.type}): ${data.error.message}`);
         } else {
-            alert('Producto actualizado correctamente');
-            window.location.href = '../admin/listEditProductos.html'; // Redirigir a la lista de productos
+            showEditModal('Producto actualizado correctamente', () => {
+                window.location.href = '../admin/listEditProductos.html';
+            });
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Error al actualizar el producto');
+        showEditModal('Error al actualizar el producto');
     });
 }
