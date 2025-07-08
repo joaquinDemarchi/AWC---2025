@@ -24,9 +24,9 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0px;
     padding: 0px;
-    background-color: #fff3e0;
+    background-color: #f5e5ca; 
     min-height: 100vh;
-    display: flex;            /* Activa flexbox */
+    display: flex;          
     flex-direction: column; 
 }
 
@@ -620,7 +620,7 @@ footer {
 
 .headerSecciones {
     background-color: var(--color-naranja-claro);
-    color: var(--color-gris-texto);
+    color: var(--color-naranja);
     padding: 20px;
     text-align: center;
 }
@@ -697,26 +697,31 @@ footer {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   align-items: flex-start;
 }
 .product-detalle .img-container {
-  flex: 1 1 300px;
+  flex: 2 1 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-width: 220px;
+  max-width: 600px;
 }
+
 .product-detalle .img-container img {
-  max-width: 320px;
+  max-width: 90%;
   width: 100%;
   height: auto;
+  min-height: 320px;
+  object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.12);
 }
 .product-detalle .info-container {
-  flex: 2 1 400px;
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -742,8 +747,27 @@ footer {
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .product-detalle .info-container button:hover {
   background: var(--color-naranja-oferta);
+}
+
+#btnCarritoCom{
+    margin: 0;
+}
+
+#precioDetProd{
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+#materialDetProd{
+    margin-top: 15px;
+    font-size: .8rem;
+}
+#colorDetProd{
+    font-size: .8rem;
 }
 
 /* ------------------ CARRITO --------------------- */
@@ -861,6 +885,59 @@ footer {
 .product-card button:hover {
     background-color: var(--color-naranja-oscuro);
 }
+
+/* ------------------ BUSCADOR --------------------- */
+
+.buscador-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 32px auto 30px auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #fff3e0;
+  padding: 22px 22px 22px 22px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(60,60,120,0.06);
+  box-sizing: border-box;
+}
+.buscador-section .search-input {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 350px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 7px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+#btn-buscar {
+  padding: 12px 18px;
+  border-radius: 7px;
+  background: var(--color-naranja, #ED7C1C);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: auto;
+  min-width: 100px;
+  max-width: 140px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+#btn-buscar:hover {
+  background: var(--color-naranja-oferta, #e65100);
+}
+#btn-buscar:hover {
+  background: var(--color-naranja-oferta, #e65100);
+}
+
+
+
 
 
 /* ------------------ NOSOTROS --------------------- */
@@ -1175,6 +1252,31 @@ font-family: inherit;
     }
 }
 
+@media (max-width: 480px) {
+  .buscador-section {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 99vw;
+    padding: 10px 2vw 10px 2vw;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  .buscador-section .search-input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.96rem;
+    padding: 10px 6px;
+    box-sizing: border-box;
+  }
+  #btn-buscar {
+    width: 100%;
+    max-width: 400px;
+    font-size: 0.96rem;
+    margin-top: 0;
+    box-sizing: border-box;
+  }
+}
+
 @media (min-width: 500px) {
     .footerContainer {
         flex-direction: row;
@@ -1282,6 +1384,28 @@ font-family: inherit;
     font-size: 1.6rem;
     text-align: center;
   }
+
+  .buscador-section {
+    max-width: 99vw;
+    padding: 14px 4vw 14px 4vw;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  .buscador-section .search-input {
+    max-width: 100%;
+    width: 100%;
+    font-size: 0.98rem;
+    padding: 11px 8px;
+    box-sizing: border-box;
+  }
+  #btn-buscar {
+    width: 100%;
+    max-width: 400px;
+    min-width: unset;
+    font-size: 0.98rem;
+    margin-top: 0;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1357,6 +1481,10 @@ font-family: inherit;
     font-size: 1.6rem;
     text-align: center;
   }
+
+  #precioDetProd{
+    text-align: center;
+}
 }
 
 @media (min-width: 900px) {

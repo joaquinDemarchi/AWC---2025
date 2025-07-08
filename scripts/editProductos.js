@@ -1,8 +1,13 @@
-const API_TOKEN =
-  "pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc";
-const BASE_ID = "appjgwL9EfmDSYv7l";
-const TABLE_NAME = "Table 1";
-const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
+//CONEXION CON AIRTABLE
+
+const airtableConfig = {
+  API_TOKEN: "pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc",
+  BASE_ID: "appjgwL9EfmDSYv7l",
+  TABLE_NAME: "Table 1",
+  get API_URL() {
+    return `https://api.airtable.com/v0/${this.BASE_ID}/${this.TABLE_NAME}`;
+  }
+};
         
 let productId = null
 // Cargar producto al iniciar la página
@@ -14,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     if(productId) {
-        fetch(`${API_URL}/${productId}`, {
+        fetch(`${airtableConfig.API_URL}/${productId}`, {
             headers: {
-                'Authorization': `Bearer ${API_TOKEN}`
+                'Authorization': `Bearer ${airtableConfig.API_TOKEN}`
             }
         })
         .then(response => response.json())
@@ -92,10 +97,10 @@ function updateSubmit(event){
         fields: product
     };
 
-    fetch(`${API_URL}/${productId}`, {
+    fetch(`${airtableConfig.API_URL}/${productId}`, {
         method: 'PATCH',
         headers:{
-            'Authorization': `Bearer ${API_TOKEN}`,
+            'Authorization': `Bearer ${airtableConfig.API_TOKEN}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(itemAirtable)

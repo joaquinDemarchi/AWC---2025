@@ -1,4 +1,5 @@
 let carritoConProd = JSON.parse(localStorage.getItem('cart')) || [];
+//cargamos EL CARRITO  desde los datos guardados en el LS 
 
 function createProductCartCard(product) {
     const card = document.createElement('article');
@@ -22,11 +23,13 @@ function createProductCartCard(product) {
     button.textContent = 'Eliminar';
     button.addEventListener('click', () => {
         const exists = carritoConProd.findIndex(p => p.title === product.title);
+        //devuelve el indice, si no encontra nada deveulve -1
         if (exists !== -1) {
             // Elimina el producto del carrito
             carritoConProd.splice(exists, 1);
+            //console.log('Producto eliminado del carrito');
+
             // Actualiza el localStorage
-            console.log('Producto eliminado del carrito');
             localStorage.setItem('cart', JSON.stringify(carritoConProd));
             // Vuelve a renderizar los productos del carrito
             renderCartProducts(carritoConProd);
@@ -44,14 +47,17 @@ function createProductCartCard(product) {
 
 function renderCartProducts(list){
     const contenedorProdCart = document.querySelector('.cart-container');
-    contenedorProdCart.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
     const totalPrice = document.querySelector('.totalCarrito');
     const clearCartButton = document.querySelector('.btn-finCompra');
+
+    contenedorProdCart.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
+
     //mensaje si el carrito está vacío
     if (list.length === 0) {
         const emptyMessage = document.createElement('p');
         emptyMessage.textContent = 'El carrito está vacío';
         contenedorProdCart.appendChild(emptyMessage);
+
         if (totalPrice) {
             totalPrice.textContent = '';
         }
@@ -61,10 +67,13 @@ function renderCartProducts(list){
         return;
     }
     
+    //crea una card por cada prod del LS
     list.forEach( product => {
         const card = createProductCartCard(product);
         contenedorProdCart.appendChild(card);
     });
+
+    //Calcula el precio total
     if (totalPrice) {
         const total = list.reduce((acc, prod) => acc + (prod.price * (prod.cantidad || 1)), 0);
         totalPrice.textContent = `Total: $ ${Number(total).toLocaleString('es-AR')}`;
@@ -76,16 +85,22 @@ function renderCartProducts(list){
 }
 
 function clearCart() {
+    //BORRA lo guardado en el contenedor de productos
     carritoConProd = [];
+
+    //BORRA el LS
     localStorage.setItem('cart', JSON.stringify(carritoConProd));
+
+    //Actualiza la pag
     renderCartProducts(carritoConProd);
     console.log('Carrito vaciado');
 
+    //deja el totla en 0 
     const totalPrice = document.querySelector('.totalCarrito');
     totalPrice.textContent = 'Total: $0';
     totalPrice.classList.add('totalCarritoP');
     
-    // alert('Compra finalizada con éxito');
+    // lleva a pag de gracias por compra
     window.location.href = './graciasPorCompra.html';
 }
 

@@ -1,20 +1,22 @@
 //CONEXION CON AIRTABLE
 
-const API_TOKEN =
-  "pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc";
-const BASE_ID = "appjgwL9EfmDSYv7l";
-const TABLE_NAME = "Table 1";
-const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
-
+const airtableConfig = {
+  API_TOKEN: "pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc",
+  BASE_ID: "appjgwL9EfmDSYv7l",
+  TABLE_NAME: "Table 1",
+  get API_URL() {
+    return `https://api.airtable.com/v0/${this.BASE_ID}/${this.TABLE_NAME}`;
+  }
+};
 
 //CARGAR PRODCTOS
 
 const getProducts = async () => {
 
-  const response = await fetch(API_URL, {
+  const response = await fetch(airtableConfig.API_URL, {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
+      'Authorization': `Bearer ${airtableConfig.API_TOKEN}`,
       'Content-Type': 'application/json'
     }
   });
@@ -71,10 +73,10 @@ const deleteProduct = async (productId, rowElement) => {
   if (!confirmDelete) return;
 
   try {
-    const response = await fetch(`${API_URL}/${productId}`, {
+    const response = await fetch(`${airtableConfig.API_URL}/${productId}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${API_TOKEN}`,
+        'Authorization': `Bearer ${airtableConfig.API_TOKEN}`,
         'Content-Type': 'application/json'
       }
     });

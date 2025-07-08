@@ -1,8 +1,13 @@
-const API_TOKEN = 'pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc';
-const BASE_ID = 'appjgwL9EfmDSYv7l';
-const TABLE_NAME = 'Table 1';
-const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
+//CONEXION CON AIRTABLE
 
+const airtableConfig = {
+    API_TOKEN: 'pat1zbngnWnO44ote.0cb2e3270022c524de4ea273621ddf0c09bd9855d72871213a3744771827e4bc',
+    BASE_ID: 'appjgwL9EfmDSYv7l',
+    TABLE_NAME: 'Table 1',
+    get API_URL() {
+        return `https://api.airtable.com/v0/${this.BASE_ID}/${this.TABLE_NAME}`;
+    }
+};
 
 // Función para traer del AIRTABLE Y renderizar los productos en el HTML
 const getProducts = async () => {
@@ -19,10 +24,10 @@ const getProducts = async () => {
 
     });
 
-    const response = await fetch(API_URL, {
+    const response = await fetch(airtableConfig.API_URL, {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${API_TOKEN}`,
+            'Authorization': `Bearer ${airtableConfig.API_TOKEN}`,
             'Content-Type': 'application/json'
         }
     });
@@ -90,16 +95,21 @@ function createProductCard(product) {
     title.textContent = product.title;
 
     const price = document.createElement('p');
-    price.textContent = `Precio: $${product.price.toLocaleString('es-AR')}`;
+    price.textContent = `$${product.price.toLocaleString('es-AR')}`;
+    price.setAttribute('id', 'precioDetProd');
 
     const descripLarga = document.createElement('p');
     descripLarga.textContent = product.descripLarga;
 
     const material = document.createElement('p');
     material.textContent = `Material: ${product.material}`;
+    material.setAttribute('id', 'materialDetProd');
+
 
     const color = document.createElement('p');
     color.textContent = `Color: ${product.color}`;
+    color.setAttribute('id', 'colorDetProd');
+
 
     const buttonCarrito = document.createElement('button');
     buttonCarrito.textContent = 'Añadir al carrito';
@@ -135,6 +145,7 @@ function createProductCard(product) {
     const buttonComprar = document.createElement('button');
     buttonComprar.textContent = 'Comprar';
     buttonComprar.setAttribute("onclick", "window.location.href = './graciasPorCompra.html'")
+    buttonComprar.setAttribute('id', 'btnCarritoCom');
 
     infoContainer.appendChild(title);
     infoContainer.appendChild(price);
