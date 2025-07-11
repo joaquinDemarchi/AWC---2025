@@ -9,10 +9,9 @@ const airtableConfig = {
     }
 };
 
+///------------------------------------------------------
 
-
-// AIR TABLE: PARA AGREGAR PRODUCTOS
-
+// MODAL DE CONFIRMACION
 
 const showAddModal = (mensaje) => {
     const modal = document.getElementById('modal-add-feedback');
@@ -22,6 +21,10 @@ const showAddModal = (mensaje) => {
         modal.showModal();
     }
 };
+
+///------------------------------------------------------
+
+// AIR TABLE: PARA AGREGAR PRODUCTOS
 
 const addToAirtable = async (product) => {
     const itemAirtable = {
@@ -52,13 +55,7 @@ const addToAirtable = async (product) => {
 
 ///------------------------------------------------------
 
-//ARR DONDE SE GUARDAN LOS PRODUCTOS DEL CARRITO
-
-const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
-
-//AIR TABLE: PARA LISTAR PRODUCTOS 
-//PROFE
-
+//AIR TABLE: 
 
 const getProducts = async () => {
 
@@ -90,95 +87,6 @@ getProducts();
 
 ///------------------------------------------------------
 
-//CREAR Y LLENAR CARDS
-
-//localiza la etiqut que contendra los preductos
-const contenedorProductos = document.querySelector('.product-container');
-const contenedorOfertas = document.querySelector('.ofertas-container');
-
-function createProductCard(product) {
-
-    //crea CARD produto
-    const card = document.createElement('article');
-    card.classList.add('producto');
-
-    //va creando los elementos de la tarjeta:
-
-    //imagen
-    const img = document.createElement('img');
-    img.src = product.thumbnail;
-    img.alt = product.title;
-    img.setAttribute("onclick", "window.location.href = './detalleProducto.html?id=" + product.id + "'");
-
-    //titulo
-    const title = document.createElement('h3');
-    title.textContent = product.title;
-
-    //descrip
-    const description = document.createElement('p');
-    description.textContent = 'Aqui va la descripcion del producto. Debe tener un numero de caracteres determminado';
-
-    //precio
-    const price = document.createElement('p');
-    price.textContent = `$${product.price}`;
-    price.classList.add('precioProd');
-
-    //boton compra con carrito
-    const button = document.createElement('button');
-    button.textContent = 'Añadir al carrito';
-    // button.setAttribute("onclick","window.location.href = './detalleProducto.html'")
-    button.addEventListener('click', () => {
-        const existe = cartProducts.find(p => p.title === product.title);
-        if (!existe) {
-            cartProducts.push(product);
-            localStorage.setItem('cart', JSON.stringify(cartProducts));
-            //actualiza el LS 
-            console.log('Producto agregado al carrito');
-        }
-    });
-
-    //Añade todos los elementos CREADOS a la tarjeta
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(price);
-    // card.appendChild(button);
-
-
-    return card;
-}
-
-///------------------------------------------------------
-
-//IMPRIMIR TARJETAS
-
-// Verifica si los contenedores existen antes de usarlos
-function renderProducts(list) {
-    //sirve para la seccion inicio
-    if (contenedorProductos) {
-        list.forEach(product => {
-            const card = createProductCard(product);
-            contenedorProductos.appendChild(card);
-        });
-        //sirve para seccion de ofertas 
-    } else if (contenedorOfertas) {
-
-        list.forEach(product => {
-            console.log(product.discountPercentage);
-
-            if (product.discountPercentage > 15) {
-                const card = createProductCard(product);
-                contenedorOfertas.appendChild(card);
-            }
-        })
-    } else {
-        console.warn('No se encontró ningun contenedor de productos');
-    }
-}
-
-
-///------------------------------------------------------
-
 //AGREGAR PRODUCTOS DESDE EL FORMULARIO
 
 document.getElementById('formAgrProduct').addEventListener('submit', function(e) {
@@ -194,6 +102,7 @@ document.getElementById('formAgrProduct').addEventListener('submit', function(e)
     getProducts(); 
     document.getElementById('formAgrProduct').reset();
 });
+
 
 ///------------------------------------------------------
 

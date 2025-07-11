@@ -9,6 +9,10 @@ const airtableConfig = {
     }
 };
 
+///------------------------------------------------------
+
+//AIR TABLE
+
 // Función para traer del AIRTABLE Y renderizar los productos en el HTML
 const getProducts = async () => {
 
@@ -62,12 +66,14 @@ const getProducts = async () => {
 }
 
 
-
 getProducts()
 
 
 const contProdDet = document.querySelector('.product-detail');
 
+///------------------------------------------------------
+
+//LISTAR 
 
 function createProductCard(product) {
     if (!product) {
@@ -161,6 +167,10 @@ function createProductCard(product) {
     return detalle;
 }
 
+///------------------------------------------------------
+
+//IMPRIMIR 
+
 function renderProducts(product) {
     //sirve para la seccion inicio
     if (contProdDet) {
@@ -173,6 +183,8 @@ function renderProducts(product) {
         console.warn('No se encontró ningun contenedor de productos');
     }
 }
+
+///------------------------------------------------------
 
 //CARGAR COMPONENTES
 

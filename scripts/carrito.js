@@ -1,6 +1,10 @@
 let carritoConProd = JSON.parse(localStorage.getItem('cart')) || [];
 //cargamos EL CARRITO  desde los datos guardados en el LS 
 
+///------------------------------------------------------
+
+//CARGAR PRODUCTOS DEL CARRITO
+
 function createProductCartCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
@@ -45,6 +49,10 @@ function createProductCartCard(product) {
     return card;
 }
 
+///------------------------------------------------------
+
+//IMPRIMIR 
+
 function renderCartProducts(list){
     const contenedorProdCart = document.querySelector('.cart-container');
     const totalPrice = document.querySelector('.totalCarrito');
@@ -83,6 +91,10 @@ function renderCartProducts(list){
         clearCartButton.style.display = 'inline-block';
     }
 }
+
+///------------------------------------------------------
+
+//LIMPIAR CARRITO
 
 function clearCart() {
     //BORRA lo guardado en el contenedor de productos

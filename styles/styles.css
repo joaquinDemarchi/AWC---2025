@@ -568,16 +568,17 @@ footer {
 
 /* ------------------ OFERTAS --------------------- */
 
-.ofertas-container{
+/* .ofertas-container{
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 10px 10px 100px;
-    /* background-color: red; */
-}
-
+    /* background-color: red; 
+} 
+*/
+/* 
 .ofertas {
     background-color: #fff3e0;
     padding: 20px 0;
@@ -613,7 +614,7 @@ footer {
     padding: 3px 8px;
     border-radius: 4px;
     font-size: 12px;
-}
+} */
 
 
 /* ------------------ CONTACTO --------------------- */
@@ -682,6 +683,7 @@ footer {
   flex-direction: row; 
   gap: 2rem;
 }
+
 .product-detail-container {
   display: flex;
   justify-content: center;
@@ -689,6 +691,7 @@ footer {
   padding: 30px 0 40px 0;
   background: #fff3e0;
 }
+
 .product-detail {
   display: flex;
   flex-direction: row;
@@ -701,6 +704,7 @@ footer {
   width: 100%;
   align-items: flex-start;
 }
+
 .product-detalle .img-container {
   flex: 2 1 400px;
   display: flex;
@@ -720,6 +724,7 @@ footer {
   border-radius: 10px;
   box-shadow: 0 1px 12px rgba(0,0,0,0.12);
 }
+
 .product-detalle .info-container {
   flex: 1 1 300px;
   display: flex;
@@ -993,10 +998,8 @@ footer {
   padding: 30px ;
   font-weight: bolder;
   font-size: 1.5rem;
-  /* border-radius: 10px; */
   margin: 30px auto 20px auto;
   max-width: 700px;
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.07); */
 }
 .gracias-img {
   display: block;
@@ -1167,7 +1170,7 @@ footer {
 
 /* ------------------ ADMIN: FORMULARIO EDITAR o ELIMINAR PRODUCTO --------------------- */
 .container main {
-   width: 100%;
+  width: 100%;
   padding: 20px;
   background: #f8f9fa;
   min-height: calc(100vh - 120px); /* Ajusta el alto para que no se superponga con el footer */
@@ -1451,7 +1454,7 @@ font-family: inherit;
         margin-top: 10px;
     }
 
-     .product-detalle .img-container img {
+    .product-detalle .img-container img {
     max-width: 100%;
   }
 
@@ -1527,12 +1530,12 @@ font-family: inherit;
     }
 
     
-.contenedorImgYText{
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 100px; 
-    align-items:center;
-
+  .contenedorImgYText{
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 100px; 
+      align-items:center;
+  }
 
     .nosotrosContainer{
         width: 90%;
@@ -1541,7 +1544,7 @@ font-family: inherit;
     }
 }
     
-}
+
 
 @media (min-width: 1200px) {
     .producto {

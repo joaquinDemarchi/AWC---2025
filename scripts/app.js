@@ -9,13 +9,9 @@ const airtableConfig = {
     }
 };
 
-//ARR DONDE SE GUARDAN LOS PRODUCTOS DEL CARRITO
-
-// const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+///------------------------------------------------------
 
 //AIR TABLE: PARA LISTAR PRODUCTOS 
-//PROFE
-
 
 const getProducts = async () => {
 
@@ -43,9 +39,8 @@ const getProducts = async () => {
     renderProducts(productsMaped);
 }
 
-
-
 getProducts();
+
 ///------------------------------------------------------
 
 //CREAR Y LLENAR CARDS
@@ -105,7 +100,6 @@ function createProductCard(product) {
     card.appendChild(price);
     // card.appendChild(button);
 
-
     return card;
 }
 
@@ -130,7 +124,7 @@ function renderProducts(list) {
     }
 }
 
-
+///------------------------------------------------------
 
 //CARGAR COMPONENTES
 

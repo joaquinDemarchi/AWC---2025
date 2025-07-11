@@ -11,6 +11,10 @@ const airtableConfig = {
 
 let allProducts = [];
 
+///------------------------------------------------------
+
+//BUSCADOR DE PRODUCTOS
+
 function filterProducts(letras) {
     const filtered = allProducts.filter(product =>
         product.title.toLowerCase().includes(letras.toLowerCase()) ||
@@ -27,6 +31,10 @@ if (btnBuscar && searchInput) {
         filterProducts(searchInput.value);
     });
 }
+
+///------------------------------------------------------
+
+//AIR TABLE: PARA LISTAR PRODUCTOS
 
 const getProducts = async () => {
 
@@ -56,6 +64,7 @@ const getProducts = async () => {
 
 
 getProducts();
+
 ///------------------------------------------------------
 
 //CREAR Y LLENAR CARDS
@@ -138,7 +147,7 @@ function renderProducts(list) {
     }
 }
 
-
+///------------------------------------------------------
 
 //CARGAR COMPONENTES
 

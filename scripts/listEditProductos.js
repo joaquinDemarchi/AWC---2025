@@ -9,6 +9,8 @@ const airtableConfig = {
   }
 };
 
+///------------------------------------------------------
+
 //CARGAR PRODCTOS
 
 const getProducts = async () => {
@@ -40,8 +42,9 @@ const getProducts = async () => {
 
 getProducts();
 
-//ELIMINAR PRODUCTOS
+///------------------------------------------------------
 
+//MODAL DE CONFIRMACIÓN
 
 // prueba de modal nativo (dialog)
 function showNativeDeleteModal() {
@@ -59,6 +62,10 @@ function showNativeDeleteModal() {
   });
 }
 
+///------------------------------------------------------
+
+//MODAL DE PROD ELIMINADO
+
 function showDeleteFeedbackModal(mensaje) {
   const modal = document.getElementById('modal-delete-feedback');
   const msg = document.getElementById('modal-delete-feedback-msg');
@@ -67,6 +74,10 @@ function showDeleteFeedbackModal(mensaje) {
     modal.showModal();
   }
 }
+
+///------------------------------------------------------
+
+//ELIMINAR PRODUCTOS
 
 const deleteProduct = async (productId, rowElement) => {
   const confirmDelete = await showNativeDeleteModal();
@@ -96,6 +107,7 @@ const deleteProduct = async (productId, rowElement) => {
 
 ///------------------------------------------------------
 
+//IMPRIMIR FILA DE CADA PRODUCTO
 
 const contenedorProdAdmin = document.querySelector(".ProductosAdminTable");
 
@@ -132,9 +144,6 @@ function createProductTable(product) {
   //       window.location.href = `../admin/deleteProductos.html?id=${product.id}`;
   //   })
 
-
-
-
   const accionesItem = document.createElement("td");
   accionesItem.classList.add("accionesProd");
   accionesItem.appendChild(btnEditItem);
@@ -146,6 +155,10 @@ function createProductTable(product) {
 
   return filaItems;
 }
+
+///------------------------------------------------------
+
+//IMPRIMIR PRODUCTOS
 
 // Verifica si los contenedores existen antes de usarlos
 function renderProducts(listProducts) {

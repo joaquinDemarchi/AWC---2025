@@ -8,16 +8,20 @@ const airtableConfig = {
     return `https://api.airtable.com/v0/${this.BASE_ID}/${this.TABLE_NAME}`;
   }
 };
-        
-let productId = null
+
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
+///------------------------------------------------------
+
+///CARGAR PRODUCTO AL INICIAR LA PÁGINA
+
+
 // Cargar producto al iniciar la página
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
 
     console.log("id de producto: " + productId)
 
-    
     if(productId) {
         fetch(`${airtableConfig.API_URL}/${productId}`, {
             headers: {
@@ -42,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+///------------------------------------------------------
+
+///MODAL DE CONFIRMACIÓN
+
 function showEditModal(mensaje, callback) {
     const modal = document.getElementById('modal-edit-feedback');
     const msg = document.getElementById('modal-edit-feedback-msg');
@@ -58,16 +66,11 @@ function showEditModal(mensaje, callback) {
 function updateSubmit(event){
     event.preventDefault();
     
-    // Obtener ID de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    
     if(!productId) {
         showEditModal('No se especificó ID de producto');
         return;
     }
 
-    // Validar campos requeridos
     const title = document.querySelector('#product-title').value.trim();
     const price = parseFloat(document.querySelector('#product-price').value);
     const description = document.querySelector('#product-description').value.trim();
@@ -76,6 +79,8 @@ function updateSubmit(event){
     const color = document.querySelector('#product-color').value.trim(); 
     const prodDestacado = document.querySelector('#product-dest').value.trim(); 
     const descripLarga = document.querySelector('#product-descripLarga').value.trim();  
+    
+    // Validar campos requeridos
 
     if(!title || isNaN(price)) {
         showEditModal('Título y precio son campos requeridos. El precio debe ser numérico.');
@@ -93,6 +98,7 @@ function updateSubmit(event){
         descripLarga: descripLarga
     };
 
+    //BODY DEL PRODUCTO
     const itemAirtable = {
         fields: product
     };
